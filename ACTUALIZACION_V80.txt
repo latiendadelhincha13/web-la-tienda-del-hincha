@@ -1,0 +1,17 @@
+Gaston Tu Pasion - Actualización V8.0 (copia de trabajo)
+
+Incluye:
+- Pedidos consecutivos mediante función segura de Supabase (#1001, #1002...).
+- Mismo número guardado en pedido y enviado por WhatsApp.
+- Carrito persistente sin registro.
+- Detección de productos que quedaron sin stock en carritos viejos.
+- Carrito principal sin elección repetida de entrega.
+- Botón Volver al carrito desde el paso 1.
+- Aclaración de tarjeta: precio en 1 pago; cuotas por WhatsApp.
+- Comprobación final de stock justo antes de crear el pedido.
+- Panel de pedidos: búsqueda, filtro, resumen, ver detalle, archivar y eliminar pruebas.
+- Aviso de cambios sin guardar al editar productos.
+- Acciones masivas para borradores: eliminar, equipo, categoría y precios.
+
+IMPORTANTE: antes de publicar, ejecutar supabase_update_v80.sql en Supabase SQL Editor.
+Esta carpeta es una copia de trabajo; no reemplaza el respaldo de producción.

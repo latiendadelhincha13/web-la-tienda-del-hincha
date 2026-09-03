@@ -1,0 +1,17 @@
+GASTON TU PASION - V8.0 PRUEBA
+
+Base: carpeta actualizada desde GitHub Desktop antes de esta tanda.
+
+Incluye:
+- Pedidos consecutivos #1001, #1002... (requiere ejecutar supabase_update_v80.sql antes de la prueba final de pedidos).
+- Carrito simplificado: la entrega se elige solo en Paso 1.
+- Volver al carrito desde Paso 1.
+- Carrito persistente en el navegador, sin registro.
+- Carritos viejos: marca productos/variantes que quedaron sin stock y exige quitarlos.
+- Panel de pedidos: buscar, filtrar, resumen, ver detalle, archivar y eliminar pruebas con confirmacion.
+- Aviso al salir de una edicion con cambios sin guardar.
+- Edicion masiva de borradores: equipo, categoria, precio efectivo, precio tarjeta y eliminacion masiva.
+- Precio de tarjeta aclarado como 1 pago; cuotas por WhatsApp.
+- Comprobacion final de stock justo antes de crear el pedido.
+
+IMPORTANTE: NO PUBLICAR EN PRODUCCION SIN PROBAR PRIMERO.
