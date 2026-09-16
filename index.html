@@ -1,0 +1,1036 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><link rel="icon" type="image/png" href="/favicon.png"><meta name="viewport" content="width=device-width,initial-scale=1"><title>La Tienda del Hincha</title>
+<style>
+:root{--red:#49BFF2;--bg:#f7fbfd;--panel:#ffffff;--line:#cfe8f3;--muted:#607784}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#fff;font-family:Arial,sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}.wrap{width:min(1180px,calc(100% - 36px));margin:auto}
+header{position:sticky;top:0;z-index:50;background:#080808f5;border-bottom:1px solid var(--line)}.nav{min-height:86px;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center}.brand img{width:clamp(155px,15vw,205px);display:block}.searchwrap{position:relative;width:min(440px,100%);justify-self:end}.searchwrap input,.tools input,.tools select{width:100%;background:#171717;color:#fff;border:1px solid #393939;border-radius:10px;padding:12px 42px 12px 13px}.clear{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:#888;font-size:22px;width:34px;height:34px;cursor:pointer;display:none}.cart{background:#171717;color:#fff;border:1px solid #3a3a3a;border-radius:10px;padding:11px 14px;font-weight:900;cursor:pointer}.cart b{color:var(--red)}.cart.pulse{animation:pulse .42s ease}@keyframes pulse{50%{transform:scale(1.08);border-color:var(--red)}}
+.hero{padding:58px 0;background:radial-gradient(circle at 83% 43%,#49BFF238,transparent 35%)}.hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:clamp(30px,5vw,72px);align-items:center}.ey{color:var(--red);font-size:12px;font-weight:900;letter-spacing:3px}h1{font-size:clamp(45px,6.5vw,78px);line-height:.95;letter-spacing:-4px;margin:16px 0 23px}h1 span{color:var(--red)}.hero p{color:#c7c7c7;font-size:18px;line-height:1.6}.hero-logo img{width:min(100%,510px);display:block}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:27px}.btn{min-height:44px;border:0;border-radius:9px;background:var(--red);color:#fff;padding:11px 18px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}.btn.alt{background:transparent;border:1px solid #555}
+section{padding:62px 0}.head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:24px}.head h2{font-size:clamp(28px,3vw,35px);margin:0}.head p{color:var(--muted);margin:7px 0 0}.clubs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.clubcard{min-height:185px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#191919,#0e0e0e);padding:15px;color:#fff;cursor:pointer;display:grid;grid-template-rows:112px auto;gap:10px;text-align:left}.clublogo{display:flex;align-items:center;justify-content:center}.clublogo img{height:105px;width:100%;object-fit:contain}.fallback{width:78px;height:78px;border-radius:50%;border:1px solid #444;background:#222;color:var(--red);font-weight:900;font-size:22px;display:flex;align-items:center;justify-content:center}.clubbottom{display:flex;justify-content:space-between;align-items:end;gap:8px}.clubbottom strong{font-size:18px}.clubbottom small{color:#888;white-space:nowrap}
+.tools{display:grid;grid-template-columns:minmax(220px,2fr) minmax(160px,1fr) minmax(160px,1fr);gap:10px;margin-bottom:22px}.sbox{position:relative}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.card{border:1px solid var(--line);background:var(--panel);border-radius:14px;overflow:hidden;cursor:pointer}.pic{aspect-ratio:4/5;background:#202020;display:flex;align-items:center;justify-content:center;padding:8px}.pic img{width:100%;height:100%;object-fit:contain;display:block;image-orientation:from-image}.info{padding:14px}.tag{color:var(--red);font-size:11px;font-weight:900;text-transform:uppercase}.name{font-weight:900;margin:7px 0;min-height:38px}.cat{color:#888;font-size:12px}.price{font-weight:900;margin-top:9px}.add{width:100%;min-height:42px;margin-top:12px;background:#202020;color:#fff;border:1px solid #444;border-radius:8px;font-weight:900;cursor:pointer}.add.added{background:#1d552f;border-color:#2f8c4c}.empty{grid-column:1/-1;padding:45px;text-align:center;color:#888}
+.banner{background:linear-gradient(100deg,var(--red),#0B5F8A);border-radius:18px;padding:34px;display:flex;justify-content:space-between;align-items:center;gap:20px}.local{display:grid;grid-template-columns:1fr 1fr;gap:18px}.box{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:24px}.box p{color:#bbb;line-height:1.7}footer{border-top:1px solid var(--line);padding:32px 0;color:#888}.adminlink{margin-top:12px;background:none;border:0;color:#777;text-decoration:underline;cursor:pointer;padding:0}
+.overlay{position:fixed;inset:0;background:#000d;display:none;align-items:center;justify-content:center;padding:18px;z-index:100}.overlay.show{display:flex}.modal{width:min(820px,100%);max-height:90vh;overflow:auto;background:#151515;border:1px solid #3a3a3a;border-radius:16px;padding:24px;position:relative}.close{position:absolute;right:12px;top:7px;border:0;background:none;color:#aaa;font-size:30px;cursor:pointer}.detail{display:grid;grid-template-columns:1fr 1fr;gap:22px}.detailpic{aspect-ratio:4/5;background:#222;border-radius:12px;padding:8px}.detailpic img{width:100%;height:100%;object-fit:contain}.desc{color:#bbb;line-height:1.6}.thumbs{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.thumbs button{width:46px;height:46px;padding:2px;border:1px solid #444;background:#222;border-radius:7px}.thumbs img{width:100%;height:100%;object-fit:contain}
+.cartrow{display:grid;grid-template-columns:1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid #2b2b2b}.qty{display:flex;align-items:center;gap:8px}.qty button{width:30px;height:30px;background:#222;color:#fff;border:1px solid #444;border-radius:6px}.note{font-size:12px;color:#888}
+.admintoolbar{display:grid;grid-template-columns:1fr auto auto auto;gap:8px;margin:16px 0}.admintoolbar input{padding:11px;background:#101010;color:#fff;border:1px solid #3a3a3a;border-radius:9px}.adminlist{display:grid;gap:8px;max-height:52vh;overflow:auto}.adminrow{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;border:1px solid #333;border-radius:9px;background:#1a1a1a;padding:10px}.adminrow small{color:#888}.form{display:grid;gap:12px;margin-top:16px}.form input,.form textarea,.form select{width:100%;padding:11px;background:#101010;color:#fff;border:1px solid #3a3a3a;border-radius:9px}.form textarea{min-height:100px}.check{display:flex;align-items:center;gap:8px}.check input{width:auto}.preview{height:260px;background:#222;border-radius:10px;padding:8px;display:flex;align-items:center;justify-content:center}.preview img{width:100%;height:100%;object-fit:contain}.toast{position:fixed;right:18px;bottom:18px;z-index:160;background:#171717;border:1px solid #3a3a3a;border-radius:12px;padding:13px 16px;transform:translateY(120px);opacity:0;transition:.22s}.toast.show{transform:none;opacity:1}.topbtn{position:fixed;right:18px;bottom:88px;z-index:40;width:48px;height:48px;border-radius:50%;border:1px solid #444;background:#171717;color:#fff;font-size:22px;opacity:0;visibility:hidden;cursor:pointer}.topbtn.show{opacity:1;visibility:visible}
+@media(max-width:1050px){.clubs,.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:800px){.nav{grid-template-columns:auto auto;padding:9px 0}.searchwrap{grid-column:1/-1;grid-row:2;width:100%}.hero-grid{grid-template-columns:1fr}.hero-logo{order:-1;display:flex;justify-content:center}.hero-logo img{width:min(420px,84vw)}.hero-copy{text-align:center}.actions{justify-content:center}.clubs,.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tools{grid-template-columns:1fr 1fr}.sbox{grid-column:1/-1}}
+@media(max-width:520px){.wrap{width:calc(100% - 22px)}.brand img{width:155px}h1{font-size:clamp(38px,12vw,54px);letter-spacing:-2px}.actions{display:grid}.tools{grid-template-columns:1fr}.sbox{grid-column:auto}.grid{gap:9px}.info{padding:10px}.detail,.local{grid-template-columns:1fr}.banner{display:block}.admintoolbar{grid-template-columns:1fr}.adminrow{grid-template-columns:1fr}}
+@media(max-width:350px){.clubs,.grid{grid-template-columns:1fr}}
+</style>
+<style id="admin-v73">
+.admin-help{color:#aaa;font-size:13px;line-height:1.45;margin:7px 0 14px}
+.admin-toolbar2{display:grid;grid-template-columns:minmax(220px,1fr) minmax(150px,.5fr) auto;gap:9px;margin-bottom:12px}
+.admin-toolbar2 input,.admin-toolbar2 select{width:100%;padding:11px;border-radius:9px;border:1px solid #3b3b3b;background:#101010;color:#fff}
+.admin-grid2{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-height:58vh;overflow:auto;padding-right:3px}
+.admin-card2{position:relative;border:1px solid #333;border-radius:12px;background:#191919;overflow:hidden}
+.admin-card2 .photo{aspect-ratio:1;background:#222;padding:6px}
+.admin-card2 .photo img{width:100%;height:100%;object-fit:contain}
+.admin-card2 .body{padding:10px}
+.admin-card2 .body strong{display:block;min-height:36px}
+.admin-card2 .body small{display:block;color:#888;margin-top:4px}
+.admin-card2 .actions{display:flex;gap:7px;margin-top:9px}
+.admin-card2 .actions button{flex:1;min-height:38px;font-size:12px;padding:8px}
+.admin-check2{position:absolute;left:8px;top:8px;width:21px;height:21px;z-index:2}
+.bulkbar2{display:none;align-items:center;justify-content:space-between;gap:10px;border:1px solid #444;background:#202020;padding:10px 12px;border-radius:10px;margin-bottom:12px}
+.bulkbar2.show{display:flex}
+.bulkform2{display:grid;gap:12px;margin-top:14px}
+.bulkline2{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:center}
+.bulkline2 input[type="checkbox"]{width:19px;height:19px}
+.bulkline2 input[type="text"],.bulkline2 textarea{width:100%;padding:11px;border:1px solid #3b3b3b;border-radius:9px;background:#101010;color:#fff}
+.bulkline2 textarea{min-height:90px}
+.editform2{display:grid;gap:12px;margin-top:14px}
+.editform2 label{font-size:13px;color:#bbb}
+.editform2 input,.editform2 textarea,.editform2 select{width:100%;padding:11px;margin-top:5px;border:1px solid #3b3b3b;border-radius:9px;background:#101010;color:#fff}
+.editform2 textarea{min-height:100px;resize:vertical}
+.imagepreview2{height:290px;border-radius:10px;background:#222;padding:8px;display:flex;align-items:center;justify-content:center}
+.imagepreview2 img{width:100%;height:100%;object-fit:contain}
+.inlinecheck2{display:flex!important;align-items:center;gap:8px}
+.inlinecheck2 input{width:auto!important;margin:0!important}
+@media(max-width:850px){.admin-grid2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.admin-toolbar2{grid-template-columns:1fr}.admin-grid2{grid-template-columns:1fr 1fr;gap:8px}.admin-card2 .body{padding:8px}.admin-card2 .body strong{font-size:13px;min-height:32px}.bulkbar2{align-items:flex-start;flex-direction:column}}
+</style>
+
+
+<style id="v74-extra">
+.brand img{width:clamp(190px,18vw,245px)!important;max-height:84px!important;object-fit:contain!important}
+@media(max-width:520px){.brand img{width:185px!important;max-height:72px!important}}
+.pic{position:relative}
+.official-badge{position:absolute;right:9px;top:9px;z-index:3;background:#49BFF2;color:#fff;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:900;letter-spacing:.55px;box-shadow:0 3px 12px #0008}
+.official-detail{display:inline-flex;background:#49BFF2;color:#fff;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;margin:0 0 10px}
+.admin-backups{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}.admin-backups .btn{font-size:12px;padding:9px 12px}.admin-backups input{display:none}
+.admin-official74{display:flex!important;align-items:center;gap:8px}.admin-official74 input{width:auto!important;margin:0!important}
+.cartrow74{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:11px;align-items:center;padding:12px 0;border-bottom:1px solid #2b2b2b}
+.cartthumb74{width:70px;height:70px;border-radius:9px;background:#222;overflow:hidden;padding:3px}.cartthumb74 img{width:100%;height:100%;object-fit:contain}
+.cartmeta74 strong{display:block}.cartmeta74 small{color:#888}.cartunit74{margin-top:5px;font-size:13px;color:#ddd}.cartside74{text-align:right}.cartsubtotal74{font-weight:900;margin-top:6px}
+.carttotals74{margin-top:15px;border-top:1px solid #444;padding-top:12px}.carttotalline74{display:flex;justify-content:space-between;gap:15px;margin:7px 0}.carttotalline74.grand{font-size:18px;font-weight:900}
+.delivery74{margin-top:15px;border-top:1px solid #444;padding-top:12px}.delivery74 label{display:flex;align-items:flex-start;gap:8px;margin:10px 0}.delivery74 input[type=radio]{margin-top:3px}.cp74{display:none;gap:8px;margin-top:8px}.cp74.show{display:flex}.cp74 input{flex:1;min-width:0;padding:10px;border-radius:8px;border:1px solid #444;background:#111;color:#fff}
+@media(max-width:560px){.cartrow74{grid-template-columns:58px minmax(0,1fr)}.cartthumb74{width:58px;height:58px}.cartside74{grid-column:2;text-align:left}}
+</style>
+
+<style id="v75-extra">
+/* variantes en ficha */
+.variant-section75{margin:16px 0}
+.variant-section75>strong{display:block;margin-bottom:9px}
+.variant-options75{display:flex;gap:9px;flex-wrap:wrap}
+.variant-option75{width:86px;border:2px solid #3c3c3c;background:#1d1d1d;color:#fff;border-radius:10px;padding:5px;cursor:pointer;text-align:center}
+.variant-option75.active{border-color:#49BFF2;box-shadow:0 0 0 2px #49BFF226}
+.variant-option75 img{width:72px;height:72px;display:block;object-fit:contain;margin:auto;background:#222;border-radius:7px}
+.variant-option75 span{display:block;font-size:11px;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.variant-required75{color:#49BFF2;font-size:12px;margin-top:7px;display:none}
+
+/* variantes admin */
+.variants-admin75{border-top:1px solid #333;margin-top:5px;padding-top:14px}
+.variants-admin75 h3{margin:0 0 5px;font-size:18px}
+.variants-admin75 .note75{color:#999;font-size:12px;margin:0 0 10px;line-height:1.45}
+.variant-admin-list75{display:grid;gap:9px}
+.variant-admin-row75{display:grid;grid-template-columns:70px minmax(130px,1fr) auto;gap:9px;align-items:center;border:1px solid #333;background:#1a1a1a;padding:8px;border-radius:10px}
+.variant-admin-thumb75{width:70px;height:70px;background:#222;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.variant-admin-thumb75 img{width:100%;height:100%;object-fit:contain}
+.variant-admin-main75{display:grid;gap:6px}
+.variant-admin-main75 input[type="text"]{margin:0}
+.variant-upload75{font-size:11px;color:#aaa}
+.variant-delete75{background:#211717;color:#fff;border:1px solid #633;border-radius:8px;padding:8px;cursor:pointer}
+.addvariant75{margin-top:9px}
+
+/* subcategoría admin */
+.category-row75{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:end}
+.category-row75 label{margin:0}
+.category-row75 .btn{min-height:43px;padding:9px 12px;font-size:12px}
+
+/* admin filter */
+.admin-toolbar2.v75{grid-template-columns:minmax(190px,1fr) minmax(140px,.45fr) minmax(150px,.45fr) auto}
+
+/* checkout */
+.checkout-steps75{display:flex;gap:7px;margin:2px 0 18px;flex-wrap:wrap}
+.checkout-step75{flex:1;min-width:110px;background:#202020;border:1px solid #373737;border-radius:9px;padding:8px;text-align:center;color:#888;font-size:12px;font-weight:800}
+.checkout-step75.active{border-color:#49BFF2;color:#fff;background:#261416}
+.checkout-panel75{display:none}.checkout-panel75.active{display:block}
+.checkout-form75{display:grid;gap:11px}
+.checkout-form75 label{font-size:13px;color:#bbb}
+.checkout-form75 input,.checkout-form75 textarea{width:100%;margin-top:5px;padding:11px;background:#101010;color:#fff;border:1px solid #3a3a3a;border-radius:9px}
+.checkout-form75 textarea{min-height:78px;resize:vertical}
+.checkout-delivery75,.checkout-payment75{display:grid;gap:9px}
+.checkout-choice75{display:flex;gap:10px;align-items:flex-start;border:1px solid #393939;border-radius:10px;padding:12px;cursor:pointer;background:#191919}
+.checkout-choice75:has(input:checked){border-color:#49BFF2;background:#241315}
+.checkout-choice75 input{margin-top:3px}
+.shipping-fields75{display:none}.shipping-fields75.show{display:grid;gap:10px;margin-top:10px}
+.checkout-actions75{display:flex;justify-content:space-between;gap:9px;margin-top:17px}
+.checkout-actions75 .btn{min-width:130px}
+.order-review75{display:grid;gap:9px}
+.review-item75{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:9px;align-items:center;border-bottom:1px solid #303030;padding-bottom:9px}
+.review-item75 img{width:52px;height:52px;object-fit:contain;background:#222;border-radius:7px}
+.review-item75 small{color:#999}
+.review-total75{display:flex;justify-content:space-between;gap:15px;font-size:19px;font-weight:900;border-top:1px solid #444;padding-top:13px;margin-top:5px}
+.review-box75{border:1px solid #383838;border-radius:10px;padding:12px;background:#191919}
+.checkout-warning75{font-size:12px;color:#aaa;line-height:1.5;margin-top:10px}
+
+/* cantidad en ficha */
+.product-qty75{display:flex;align-items:center;gap:8px;margin:13px 0}
+.product-qty75 button{width:34px;height:34px;border:1px solid #444;background:#222;color:#fff;border-radius:7px;cursor:pointer}
+.product-qty75 span{min-width:24px;text-align:center;font-weight:900}
+
+@media(max-width:650px){
+ .variant-admin-row75{grid-template-columns:58px minmax(0,1fr);align-items:start}
+ .variant-admin-thumb75{width:58px;height:58px}
+ .variant-delete75{grid-column:2}
+ .admin-toolbar2.v75{grid-template-columns:1fr}
+ .checkout-actions75{flex-direction:column-reverse}
+ .checkout-actions75 .btn{width:100%}
+}
+</style>
+
+<style id="v76-extra">
+.product-instagram76{display:inline-flex;margin-top:10px;color:#ddd;text-decoration:none;font-size:13px;font-weight:800;border-bottom:1px solid #777;padding-bottom:2px}
+.admin-tabs76{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}.admin-tab76{border:1px solid #3b3b3b;background:#191919;color:#bbb;border-radius:9px;padding:9px 14px;font-weight:900;cursor:pointer}.admin-tab76.active{background:#49BFF2;border-color:#49BFF2;color:#fff}.admin-section76{display:none}.admin-section76.active{display:block}
+.orders76{display:grid;gap:10px}.ordercard76{border:1px solid #343434;background:#181818;border-radius:12px;padding:13px}.orderhead76{display:flex;justify-content:space-between;gap:12px}.orderhead76 small,.order-note76{color:#999}.ordergrid76{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0}.orderstat76{background:#222;border-radius:8px;padding:8px;font-size:12px}.orderstat76 b{display:block;color:#999;font-size:10px;text-transform:uppercase}.orderactions76{display:flex;gap:8px;flex-wrap:wrap}.orderactions76 select{background:#111;color:#fff;border:1px solid #444;border-radius:8px;padding:8px}.order-empty76{padding:25px;text-align:center;color:#888;border:1px dashed #444;border-radius:12px}.order-note76{font-size:12px;line-height:1.45}
+@media(max-width:650px){.ordergrid76{grid-template-columns:1fr 1fr}}
+</style>
+<style id="v77-extra">
+/* Portada */
+.hero h1{line-height:1.06!important}
+.hero-logo{background:transparent!important}
+.hero-logo img{background:transparent!important}
+
+/* Sin stock: intentionally different from OFICIAL */
+.stock-badge77{position:absolute;left:9px;top:9px;z-index:3;background:#555;color:#fff;border:1px solid #777;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:900;letter-spacing:.55px;box-shadow:0 3px 12px #0008}
+.stock-detail77{display:inline-flex;background:#555;color:#fff;border:1px solid #777;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;margin:0 0 10px}
+.add.stock-disabled77{opacity:.48;cursor:not-allowed!important}
+.variant-option75.variant-soldout{opacity:.48;cursor:not-allowed;border-color:#666;position:relative}.variant-option75.variant-soldout:after{content:"SIN STOCK";position:absolute;inset:auto 3px 25px;background:#555;color:#fff;border-radius:5px;padding:3px;font-size:9px;font-weight:900}.variant-option75:disabled{pointer-events:none}
+
+/* Solo San Martín de Burzaco: elimina visualmente el recuadro blanco exterior */
+.club[data-club="San martin (B)"] img{clip-path:none!important}
+</style>
+
+<style id="public-deploy-lock">#adminModal,#editModal,#bulkModal{display:none!important}</style><style id="backtotop-v78">#backToTop{position:fixed;right:18px;bottom:18px;z-index:9998;width:48px;height:48px;border:1px solid #ffffff33;border-radius:50%;background:#111;color:#fff;font-size:25px;font-weight:900;cursor:pointer;box-shadow:0 6px 22px #0008;display:none;align-items:center;justify-content:center}#backToTop.show{display:flex}@media(max-width:700px){#backToTop{right:14px;bottom:14px;width:46px;height:46px}}</style>\n<style id="ltdh-theme-v1">
+:root{--red:#49BFF2;--bg:#f5fbfe;--panel:#ffffff;--line:#c9e8f5;--muted:#607784;--navy:#073b61;--blue:#0b6f9f;--soft:#eaf8fd}
+body{background:var(--bg);color:#12364a}
+header{background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);box-shadow:0 5px 20px #0b6f9f12}
+.brand img{max-height:76px!important;object-fit:contain!important}
+.searchwrap input,.tools input,.tools select{background:#fff;color:#12364a;border-color:#bcddea}
+.cart{background:var(--navy);color:#fff;border-color:var(--navy)}
+.hero{background:radial-gradient(circle at 82% 42%,#49BFF22e,transparent 38%),linear-gradient(180deg,#fff,#eef9fd)}
+.hero p{color:#526f7e}.hero-logo img{filter:none}
+.btn{background:#49BFF2;color:#073b61;border:1px solid #36acd9}.btn.alt{background:#fff;color:#0b6f9f;border-color:#9fd5e9}
+.head h2,h1{color:#073b61}.ey,h1 span,.tag{color:#0b86bd}
+.clubcard{background:linear-gradient(145deg,#fff,#eaf8fd);color:#073b61;border-color:#bfe3f1;box-shadow:0 8px 22px #0b6f9f0d}.clubbottom small{color:#607784}.fallback{background:#e8f7fc;border-color:#b9dfed;color:#0b86bd}
+.card{background:#fff;border-color:#bfe3f1;box-shadow:0 8px 20px #0b6f9f0d}.pic{background:#f4f9fb}.info{color:#12364a}.cat{color:#718995}.price{color:#073b61}.add{background:#49BFF2;color:#073b61;border-color:#36acd9}.add:hover{background:#35b4e7}.add.added{background:#d9f5e3;color:#185c32;border-color:#8bd0a3}
+.official-badge,.official-detail{background:#49BFF2!important;color:#073b61!important}
+.banner{background:linear-gradient(100deg,#49BFF2,#0b6f9f);color:#fff}.banner .btn{background:#fff;color:#0b6f9f;border-color:#fff}
+.box{background:#fff;color:#12364a}.box p{color:#607784}footer{background:#073b61;color:#d9edf6;border-top:0}footer strong{color:#fff!important}
+.modal{background:#fff;color:#12364a;border-color:#bfe3f1}.close{color:#607784}.detailpic,.thumbs button,.cartthumb74,.variant-option75 img,.review-item75 img{background:#f3f8fa}.desc{color:#607784}.qty button,.product-qty75 button{background:#eaf8fd;color:#073b61;border-color:#b9dfed}
+.checkout-step75{background:#edf7fb;border-color:#c5e5f1;color:#607784}.checkout-step75.active{background:#d9f3fc;border-color:#49BFF2;color:#073b61}.checkout-choice75{background:#fff;border-color:#c5e5f1;color:#12364a}.checkout-choice75:has(input:checked){background:#eaf8fd;border-color:#49BFF2}.checkout-form75 input,.checkout-form75 textarea{background:#fff;color:#12364a;border-color:#bcddea}.review-box75{background:#f7fbfd;border-color:#c5e5f1}.note{color:#607784}
+.toast{background:#073b61;color:#fff;border-color:#0b6f9f}.topbtn{background:#49BFF2;color:#073b61;border-color:#36acd9}
+.product-instagram76{color:#0b6f9f!important}
+@media(max-width:800px){.brand img{max-height:68px!important}}
+</style>\n
+<style id="lth-light-v2">
+:root{--red:#49BFF2;--bg:#f7fbfd;--panel:#ffffff;--line:#cfe8f3;--muted:#607784;--ink:#0b3552;--soft:#eef8fc;--blue:#0B5F8A}
+body{background:var(--bg)!important;color:var(--ink)!important}
+header{background:#ffffffF5!important;border-bottom:1px solid var(--line)!important;box-shadow:0 3px 18px #0b5f8a12}
+.searchwrap input,.tools input,.tools select{background:#fff!important;color:var(--ink)!important;border:1px solid #b9dce9!important}
+.searchwrap input::placeholder,.tools input::placeholder{color:#7d96a5!important}
+.cart{background:#fff!important;color:var(--ink)!important;border:1px solid #b9dce9!important}
+.hero{background:radial-gradient(circle at 83% 43%,#49BFF22c,transparent 38%)!important}
+.hero p{color:#557080!important}.btn{background:var(--red)!important;color:#fff!important}.btn:hover{filter:brightness(.96)}
+.btn.alt{background:#fff!important;color:var(--blue)!important;border:1px solid #9ed5e8!important}
+.hero-logo img,.brand img{background:transparent!important}
+.clubcard{background:#fff!important;color:var(--ink)!important;border:1px solid #bfe2ef!important;box-shadow:0 5px 18px #0b5f8a0d;transition:.18s ease}
+.clubcard:hover{transform:translateY(-2px);border-color:var(--red)!important;box-shadow:0 8px 24px #49bff224}
+.fallback{background:var(--soft)!important;border-color:#bfe2ef!important;color:var(--blue)!important}
+.clubbottom small{color:#6e8794!important}
+.card{background:#fff!important;border-color:#c5e4ef!important;box-shadow:0 4px 14px #0b5f8a0b}
+.pic{background:#f3f9fc!important}.name,.price{color:var(--ink)!important}.cat{color:#718894!important}.tag{color:var(--blue)!important}
+.add{background:var(--red)!important;color:#fff!important;border-color:var(--red)!important}.add:hover{filter:brightness(.96)}
+.add.added{background:#2d9b62!important;border-color:#2d9b62!important}.add.stock-disabled77{background:#a8bbc4!important;border-color:#a8bbc4!important}
+.official-badge,.official-detail{background:var(--red)!important;color:#fff!important}
+.banner{background:linear-gradient(110deg,#49BFF2,#0B5F8A)!important;color:#fff!important}
+.box{background:#fff!important;border-color:#c5e4ef!important}.box p{color:#58717f!important}.box strong{color:var(--ink)!important}
+footer{color:#6c8390!important;border-color:#c5e4ef!important}footer strong{color:var(--ink)!important}
+.overlay{background:#0b3552b8!important}.modal{background:#fff!important;color:var(--ink)!important;border-color:#bfe2ef!important;box-shadow:0 16px 60px #082b3f38}
+.close{color:#557080!important}.detailpic,.thumbs button,.cartthumb74,.review-item75 img,.preview,.imagepreview2{background:#f2f8fb!important;border-color:#c5e4ef!important}
+.desc,.cartunit74,.checkout-form75 label,.checkout-warning75{color:#58717f!important}.thumbs button{border-color:#c5e4ef!important}
+.cartrow,.cartrow74{border-bottom-color:#d8ebf2!important}.qty button,.product-qty75 button{background:#fff!important;color:var(--ink)!important;border-color:#b9dce9!important}
+.carttotals74,.delivery74{border-top-color:#cfe3ec!important}.cp74 input,.checkout-form75 input,.checkout-form75 textarea{background:#fff!important;color:var(--ink)!important;border-color:#b9dce9!important}
+.checkout-step75{background:#edf7fb!important;border-color:#c5e4ef!important;color:#66808d!important}.checkout-step75.active{background:#dff4fc!important;border-color:var(--red)!important;color:var(--blue)!important}
+.checkout-choice75{background:#fff!important;border-color:#c5e4ef!important;color:var(--ink)!important}.checkout-choice75:has(input:checked){background:#eaf8fd!important;border-color:var(--red)!important}
+.review-item75{border-bottom-color:#d8ebf2!important}.review-total75{border-top-color:#c5e4ef!important}.review-box75{background:#f8fcfe!important;border-color:#c5e4ef!important}
+.variant-option75{background:#fff!important;color:var(--ink)!important;border-color:#c5e4ef!important}.variant-option75.active{border-color:var(--red)!important;box-shadow:0 0 0 2px #49BFF22b!important}.variant-option75 img{background:#f2f8fb!important}
+.product-instagram76{color:var(--blue)!important;border-color:#83c9e4!important}
+#backToTop,.topbtn{background:#fff!important;color:var(--blue)!important;border-color:#b9dce9!important;box-shadow:0 6px 20px #0b5f8a20!important}
+.toast{background:#fff!important;color:var(--ink)!important;border-color:#b9dce9!important;box-shadow:0 8px 30px #0b5f8a22}
+@media(max-width:700px){header{background:#fffffff8!important}}
+</style>
+
+<style id="gallery-v82">.detailpic{height:auto!important;aspect-ratio:auto!important}.detailpic>img{width:100%;aspect-ratio:4/5;object-fit:contain;background:#f3f8fa;border-radius:10px}.gallery-thumbs82{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.gallery-thumb82{width:62px;height:62px;padding:3px;border:2px solid #c5e4ef;background:#fff;border-radius:8px;cursor:pointer}.gallery-thumb82.active{border-color:#49BFF2}.gallery-thumb82 img{width:100%;height:100%;object-fit:contain}</style>
+</head><body>
+<header><div class="wrap nav"><a class="brand" href="#inicio"><img src="assets/logo-ltdh.png"></a><div class="searchwrap"><input id="topSearch" placeholder="Buscar en todo el catálogo..."><button class="clear" id="topClear">×</button></div><button class="cart" id="cartBtn">🛒 Carrito <b id="cartCount">0</b></button></div></header>
+<main id="inicio"><section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><div class="ey">La Tienda del Hincha · MERCHANDISING DE FÚTBOL</div><h1>VIVÍ EL FÚTBOL.<br><span>LLEVÁ TU PASIÓN.</span></h1><p>Explorá el catálogo por club, categoría o nombre. Mirá lo que tenemos, armá tu carrito o vení a verlo al local.</p><div class="actions"><a class="btn" href="#catalogo">VER CATÁLOGO →</a><a class="btn alt" href="#local">VISITAR EL LOCAL</a></div></div><div class="hero-logo"><img src="assets/logo-ltdh.png"></div></div></section>
+<section id="clubes"><div class="wrap"><div class="head"><div><h2>Elegí tu club</h2><p>Tocá el escudo y vas directo al catálogo del equipo.</p></div><div id="clubProductCount">Cargando catálogo...</div></div><div class="clubs" id="clubs"></div></div></section>
+<section id="catalogo"><div class="wrap"><div class="head"><div><h2>Catálogo</h2><p>Buscá por nombre, club o subcategoría.</p></div><div id="resultCount"></div></div><div class="tools"><div class="sbox"><input id="search" placeholder="Ej: billetera, River, vaso..."><button class="clear" id="catalogClear">×</button></div><select id="clubFilter"></select><select id="catFilter"></select></div><div class="grid" id="grid"></div></div></section>
+<section><div class="wrap"><div class="banner"><div><h2>¿Preferís comprar en el local?</h2><p>Encontrá el producto online y después vení a verlo en persona.</p></div><a class="btn" style="background:#fff;color:#111" href="#local">VER LOCAL</a></div></div></section>
+<section id="local"><div class="wrap"><div class="head"><div><h2>Visitá La Tienda del Hincha</h2></div></div><div class="local"><div class="box"><h3>📍 Local</h3><p><a href="https://www.google.com/maps/search/?api=1&query=Evita+850%2C+El+Jag%C3%BCel%2C+Buenos+Aires" target="_blank"><strong style="color:#fff">Evita 850, El Jagüel</strong></a></p><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Evita+850%2C+El+Jag%C3%BCel%2C+Buenos+Aires" target="_blank">📍 CÓMO LLEGAR</a></div><div class="box"><h3>📲 Contacto</h3><p>Instagram: <a href="https://www.instagram.com/latiendadelhincha.ej/" target="_blank" rel="noopener" style="text-decoration:underline">@latiendadelhincha.ej</a></p><a class="btn" href="https://www.instagram.com/latiendadelhincha.ej/" target="_blank" rel="noopener">VER INSTAGRAM</a></div></div></div></section></main>
+<footer><div class="wrap"><strong style="color:#fff">La Tienda del Hincha</strong><br></div></footer>
+<button class="topbtn" id="toTop">↑</button><div class="toast" id="toast"><strong id="toastTitle"></strong><br><span id="toastText"></span></div>
+<div class="overlay" id="productModal"><div class="modal"><button class="close" data-close="productModal">×</button><div id="productDetail"></div></div></div>
+<div class="overlay" id="cartModal"><div class="modal"><button class="close" data-close="cartModal">×</button><h2>Tu carrito</h2><div id="cartItems"></div><button class="btn" style="width:100%;margin-top:15px" id="checkoutBtn">FINALIZAR COMPRA</button></div></div>
+
+<div class="overlay" id="checkoutModal"><div class="modal" style="width:min(760px,100%)">
+<button class="close" data-close="checkoutModal">×</button>
+<h2>Finalizar compra</h2>
+<div class="checkout-steps75">
+<div class="checkout-step75 active" data-step-label="1">1. Entrega</div>
+<div class="checkout-step75" data-step-label="2">2. Tus datos</div>
+<div class="checkout-step75" data-step-label="3">3. Pago</div>
+<div class="checkout-step75" data-step-label="4">4. Revisar</div>
+</div>
+
+<div class="checkout-panel75 active" data-checkout-step="1">
+<h3>¿Cómo querés recibir tu compra?</h3>
+<div class="checkout-delivery75">
+<label class="checkout-choice75"><input type="radio" name="checkoutDelivery" value="pickup" checked><span><strong>Retiro en nuestro local — GRATIS</strong><br><small>Evita 850, El Jagüel.</small></span></label>
+<label class="checkout-choice75"><input type="radio" name="checkoutDelivery" value="branch"><span><strong>Correo Argentino — Retiro en sucursal</strong><br><small>Costo y sucursal a confirmar según código postal.</small></span></label>
+<label class="checkout-choice75"><input type="radio" name="checkoutDelivery" value="shipping"><span><strong>Correo Argentino — Envío a domicilio</strong><br><small>El costo se confirma según tu código postal.</small></span></label>
+</div>
+<div class="checkout-actions75"><span></span><button class="btn" id="checkoutNext1" type="button">CONTINUAR</button></div>
+</div>
+
+<div class="checkout-panel75" data-checkout-step="2">
+<h3>Tus datos</h3>
+<div class="checkout-form75">
+<label>Nombre y apellido<input id="customerName" autocomplete="name"></label>
+<div class="shipping-fields75" id="shippingFields">
+<label id="addressField76">Dirección<input id="customerAddress" autocomplete="street-address"></label>
+<label>Localidad<input id="customerCity"></label>
+<label>Código postal<input id="customerCP" inputmode="numeric" autocomplete="postal-code"></label>
+<label id="referenceField76">Referencia (opcional)<textarea id="customerReference" placeholder="Ej: entre calles, timbre, piso..."></textarea></label><label id="branchField76" style="display:none">Sucursal de Correo Argentino (opcional por ahora)<input id="customerBranch" placeholder="Podés confirmarla por WhatsApp"></label>
+</div>
+</div>
+<div class="checkout-actions75"><button class="btn alt" id="checkoutBack2" type="button">ATRÁS</button><button class="btn" id="checkoutNext2" type="button">CONTINUAR</button></div>
+</div>
+
+<div class="checkout-panel75" data-checkout-step="3">
+<h3>Forma de pago</h3>
+<div class="checkout-payment75">
+<label class="checkout-choice75"><input type="radio" name="checkoutPayment" value="cash" checked><span><strong>Efectivo</strong><br><small>Usamos el precio efectivo / transferencia.</small></span></label>
+<label class="checkout-choice75"><input type="radio" name="checkoutPayment" value="transfer"><span><strong>Transferencia</strong><br><small>Primero enviás el pedido y el local te pasa los datos para pagar.</small></span></label>
+<label class="checkout-choice75"><input type="radio" name="checkoutPayment" value="card"><span><strong>Tarjeta</strong><br><small>Precio en 1 pago. Consultá opciones en cuotas por WhatsApp.</small></span></label>
+</div>
+<div class="checkout-actions75"><button class="btn alt" id="checkoutBack3" type="button">ATRÁS</button><button class="btn" id="checkoutNext3" type="button">REVISAR PEDIDO</button></div>
+</div>
+
+<div class="checkout-panel75" data-checkout-step="4">
+<h3>Revisá tu pedido</h3>
+<div class="order-review75" id="orderReview"></div>
+<p class="checkout-warning75">En esta etapa el pedido se arma y se abre WhatsApp para confirmarlo con La Tienda del Hincha. No se cobra automáticamente desde esta versión.</p>
+<div class="checkout-actions75"><button class="btn alt" id="checkoutBack4" type="button">ATRÁS</button><button class="btn" id="sendWhatsAppOrder" type="button">ENVIAR PEDIDO POR WHATSAPP</button></div>
+</div>
+</div></div>
+
+
+<div class="overlay" id="adminModal"><div class="modal" style="width:min(1100px,100%)">
+<button class="close" data-close="adminModal">×</button>
+<h2>Administración · La Tienda del Hincha</h2>
+<p class="admin-help">Ves los productos con foto, igual que en el catálogo. Podés crear, editar, borrar/ocultar y seleccionar varios para modificar precios o descripción juntos.</p>
+<div class="admin-tabs76"><button class="admin-tab76 active" id="adminProductsTab" type="button">PRODUCTOS</button><button class="admin-tab76" id="adminOrdersTab" type="button">PEDIDOS</button></div><div class="admin-section76 active" id="adminProductsSection"><div class="admin-backups">
+<button class="btn alt" id="exportBackupBtn" type="button">EXPORTAR RESPALDO</button>
+<button class="btn alt" id="importBackupBtn" type="button">IMPORTAR RESPALDO</button>
+<input id="importBackupFile" type="file" accept=".json,application/json">
+</div>
+<div class="admin-toolbar2 v75">
+<input id="adminSearch" placeholder="Buscar producto...">
+<select id="adminClubFilter"><option value="">Todos los clubes</option></select>
+<select id="adminCategoryFilter"><option value="">Todas las subcategorías</option></select>
+<button class="btn" id="newProductBtn" type="button">+ NUEVO PRODUCTO</button>
+</div>
+<div class="bulkbar2" id="bulkBar">
+<div><strong id="bulkCount">0 seleccionados</strong><br><small style="color:#999">Edición masiva de los seleccionados.</small></div>
+<button class="btn" id="bulkOpenBtn" type="button">EDITAR SELECCIONADOS</button>
+</div>
+<div class="admin-grid2" id="adminGrid"></div>
+</div></div>
+
+<div class="overlay" id="editModal"><div class="modal">
+<button class="close" data-close="editModal">×</button>
+<h2 id="editTitle">Editar producto</h2>
+<div class="editform2">
+<label>Nombre<input id="editName"></label>
+<label>Club<select id="editClub"></select></label>
+<div class="category-row75">
+<label>Subcategoría<select id="editCategory"></select></label>
+<button class="btn alt" id="newCategoryBtn" type="button">+ NUEVA</button>
+</div>
+<label>Precio efectivo / transferencia<input id="editPriceCash" inputmode="numeric" placeholder="Ej: 18500"></label>
+<label>Precio con tarjeta<input id="editPriceCard" inputmode="numeric" placeholder="Ej: 20200"></label>
+<label>Descripción<textarea id="editDescription" placeholder="Mini descripción opcional"></textarea></label>
+<div class="variants-admin75">
+<h3>Diseños / variantes</h3>
+<p class="note75">Si el producto tiene varios diseños, cargalos acá. El cliente elegirá uno antes de agregarlo al carrito.</p>
+<div class="variant-admin-list75" id="variantAdminList"></div>
+<button class="btn alt addvariant75" id="addVariantBtn" type="button">+ AGREGAR DISEÑO</button>
+</div>
+<label>Reemplazar imagen principal<input id="editImage" type="file" accept="image/*"></label>
+<div class="imagepreview2" id="imagePreview"><span style="color:#888">Imagen del producto</span></div>
+<label class="inlinecheck2"><input id="editVisible" type="checkbox"> Mostrar producto en la web</label>
+<label class="admin-official74"><input id="editOfficial" type="checkbox"> Producto oficial</label><label class="admin-official74"><input id="editOutOfStock" type="checkbox"> Producto en faltante / Sin stock</label>
+<button class="btn" id="saveEditBtn" type="button">GUARDAR CAMBIOS</button>
+</div>
+</div></div>
+
+<div class="overlay" id="bulkModal"><div class="modal">
+<button class="close" data-close="bulkModal">×</button>
+<h2>Edición masiva</h2>
+<p class="admin-help">Marcá solamente lo que quieras cambiar. Lo que no marques queda como está.</p>
+<div class="bulkform2">
+<div class="bulkline2"><input id="bulkUseCash" type="checkbox"><input id="bulkCash" type="text" inputmode="numeric" placeholder="Precio efectivo / transferencia"></div>
+<div class="bulkline2"><input id="bulkUseCard" type="checkbox"><input id="bulkCard" type="text" inputmode="numeric" placeholder="Precio con tarjeta"></div>
+<div class="bulkline2"><input id="bulkUseDesc" type="checkbox"><textarea id="bulkDesc" placeholder="Descripción para todos los seleccionados"></textarea></div>
+<div class="bulkline2"><input id="bulkUseOfficial" type="checkbox"><label class="admin-official74"><input id="bulkOfficial" type="checkbox"> Marcar como producto oficial</label></div><div class="bulkline2"><input id="bulkUseOutOfStock" type="checkbox"><label class="admin-official74"><input id="bulkOutOfStock" type="checkbox"> Marcar como SIN STOCK</label></div>
+<button class="btn" id="bulkApplyBtn" type="button">APLICAR CAMBIOS</button>
+</div>
+</div></div>
+
+<script id="product-data" type="application/json">[]</script><script id="logo-data" type="application/json">{"Argentina":"https://commons.wikimedia.org/wiki/Special:FilePath/Argentine%20Football%20Association%20logo.svg","Banfield":"https://commons.wikimedia.org/wiki/Special:FilePath/CA%20Banfield%20%282014%29.svg","Boca":"https://commons.wikimedia.org/wiki/Special:FilePath/Escudo%20del%20Club%20Atl%C3%A9tico%20Boca%20Juniors.svg","Brown de adrogue":"https://commons.wikimedia.org/wiki/Special:FilePath/Escudo%20del%20Club%20Brown%20de%20Adrogue.svg","Claypole":"https://commons.wikimedia.org/wiki/Special:FilePath/Club%20Atl%C3%A9tico%20Claypole.svg","Estudiantes (LP)":"https://commons.wikimedia.org/wiki/Special:FilePath/Estudiantes%20de%20la%20Plata%20crest%20%282025%29.svg","Huracan":"https://commons.wikimedia.org/wiki/Special:FilePath/Emblema%20oficial%20del%20Club%20Atl%C3%A9tico%20Hurac%C3%A1n.svg","Independiente":"https://commons.wikimedia.org/wiki/Special:FilePath/Escudo%20del%20Club%20Atl%C3%A9tico%20Independiente.svg","Lanus":"https://commons.wikimedia.org/wiki/Special:FilePath/Escudo%20del%20Club%20Atletico%20Lan%C3%BAs.png","Los andes":"https://commons.wikimedia.org/wiki/Special:FilePath/Escudo%20del%20Club%20Atl%C3%A9tico%20Los%20Andes.svg","Racing":"https://assets.footylogos.com/logos/racing-club/racing-club-logo-footylogos.svg","River":"https://commons.wikimedia.org/wiki/Special:FilePath/Club%20Atl%C3%A9tico%20River%20Plate%20logo.svg","San Lorenzo":"https://commons.wikimedia.org/wiki/Special:FilePath/Escudo%20San%20Lorenzo%202026.svg","San martin (B)":"https://commons.wikimedia.org/wiki/Special:FilePath/Logo%20of%20San%20Mart%C3%ADn%20de%20Burzaco%20%282023%29.png","Temperley":"https://commons.wikimedia.org/wiki/Special:FilePath/Club%20temperley%20logo.png","Velez":"https://commons.wikimedia.org/wiki/Special:FilePath/Escudo%20del%20Club%20Atl%C3%A9tico%20V%C3%A9lez%20Sarsfield.svg"}</script>
+<script>
+const BASE=JSON.parse(document.getElementById("product-data").textContent);
+const LOGOS=JSON.parse(document.getElementById("logo-data").textContent);
+const $=id=>document.getElementById(id);
+const KEY="gtp_admin_v73";
+const MAX_BASE_ID=BASE.length?Math.max(...BASE.map(p=>p.id)):0;
+let cart=[], currentEdit=null, newImage=null, selected=new Set(), toastTimer, currentVariants=[], productModalVariant=null, productModalQty=1, checkoutStep=1;
+
+function emptyState(){return {edits:{},deleted:[],custom:[]}}
+function readState(){try{const s=JSON.parse(localStorage.getItem(KEY)||"null");return s&&s.edits?s:emptyState()}catch(e){return emptyState()}}
+let STATE=readState();
+
+function buildProducts(){
+  const deleted=new Set(STATE.deleted||[]);
+  const list=BASE.filter(p=>!deleted.has(p.id)).map(p=>({...p,...((STATE.edits||{})[p.id]||{})}));
+  for(const p of (STATE.custom||[])) list.push(p);
+  return list;
+}
+let PRODUCTS=[];
+
+function saveState(){
+  try{localStorage.setItem(KEY,JSON.stringify(STATE));return true}
+  catch(e){alert("No pude guardar el cambio en el navegador. Probá guardar sin cambiar la foto o hacé menos cambios de imagen.");return false}
+}
+function patchProduct(id,patch){
+  if(id>MAX_BASE_ID){
+    const i=(STATE.custom||[]).findIndex(p=>p.id===id);
+    if(i>=0) STATE.custom[i]={...STATE.custom[i],...patch};
+  }else{
+    STATE.edits[id]={...(STATE.edits[id]||{}),...patch};
+  }
+  saveState();
+  PRODUCTS=buildProducts();
+}
+function money(v){const n=Number(String(v||"").replace(/\D/g,""));return n?"$ "+n.toLocaleString("es-AR"):""}
+function visible(){return PRODUCTS.filter(p=>p.visible!==false)}
+function initials(n){return n.split(/\s+/).filter(Boolean).slice(0,2).map(x=>x[0]).join("").toUpperCase()}
+
+function categoriesFor(club){
+  const set=new Set(PRODUCTS.filter(p=>p.club===club).map(p=>p.category).filter(Boolean));
+  set.add("Otros");
+  return [...set].sort((a,b)=>a.localeCompare(b,"es"));
+}
+function variantImage(p,v){
+  if(v&&v.image)return v.image;
+  if(v&&Number.isInteger(v.imageIndex)&&p.images&&p.images[v.imageIndex])return p.images[v.imageIndex];
+  return p.image||((p.images||[])[0]||"");
+}
+function productVariants(p){
+  if(Array.isArray(p.variants)&&p.variants.length){
+    return p.variants.map((v,i)=>({...v,id:v.id||("v"+i),name:v.name||("Diseño "+(i+1))}));
+  }
+  const imgs=(p.images&&p.images.length?p.images:[p.image]).filter(Boolean);
+  return imgs.map((u,i)=>({id:"base-"+i,name:"Diseño "+(i+1),imageIndex:i}));
+}
+function displayImage(p){
+  const vars=productVariants(p);
+  return vars.length?variantImage(p,vars[0]):p.image;
+}
+
+
+function rebuildClubs(){
+  const clubs=[...new Set(visible().map(p=>p.club))].sort((a,b)=>a.localeCompare(b,"es"));
+  $("clubs").replaceChildren(...clubs.map(c=>{
+    const b=document.createElement("button");b.className="clubcard";
+    const lg=document.createElement("div");lg.className="clublogo";
+    const im=document.createElement("img");im.src=LOGOS[c]||"";im.alt="Escudo de "+c;
+    const fb=document.createElement("div");fb.className="fallback";fb.textContent=initials(c);fb.style.display="none";
+    im.onerror=()=>{im.style.display="none";fb.style.display="flex"};
+    lg.append(im,fb);
+    const bt=document.createElement("div");bt.className="clubbottom";
+    const st=document.createElement("strong");st.textContent=c;
+    const sm=document.createElement("small");sm.textContent=visible().filter(p=>p.club===c).length+" productos";
+    bt.append(st,sm);b.append(lg,bt);
+    b.onclick=()=>{$("clubFilter").value=c;rebuildCats();$("catFilter").value="";syncSearch("");render();$("catalogo").scrollIntoView({behavior:"smooth"})};
+    return b;
+  }));
+  $("clubFilter").replaceChildren(new Option("Todos los clubes",""),...clubs.map(c=>new Option(c,c)));
+}
+function rebuildCats(){
+  const club=$("clubFilter").value;
+  const cats=[...new Set(visible().filter(p=>!club||p.club===club).map(p=>p.category))].sort((a,b)=>a.localeCompare(b,"es"));
+  $("catFilter").replaceChildren(new Option("Todas las categorías",""),...cats.map(c=>new Option(c,c)));
+}
+function filtered(){
+  const words=$("search").value.toLowerCase().trim().split(/\s+/).filter(Boolean),club=$("clubFilter").value,cat=$("catFilter").value;
+  return visible().filter(p=>{const text=`${p.name||""} ${p.club||""} ${p.category||""} ${p.description||""}`.toLowerCase();return(!club||p.club===club)&&(!cat||p.category===cat)&&words.every(word=>text.includes(word))});
+}
+function makeCard(p){
+  const a=document.createElement("article");a.className="card";
+  const pic=document.createElement("div");pic.className="pic";
+  const im=document.createElement("img");im.src=displayImage(p);im.alt=p.name;pic.append(im);
+  const vars=productVariants(p),allVariantsOut=vars.length>0&&vars.every(v=>v.out_of_stock||v.outOfStock),productOut=!!p.outOfStock||allVariantsOut;
+  if(p.official){const ob=document.createElement("span");ob.className="official-badge";ob.textContent="OFICIAL";pic.append(ob);} if(productOut){const sb=document.createElement("span");sb.className="stock-badge77";sb.textContent="SIN STOCK";pic.append(sb);}
+  const info=document.createElement("div");info.className="info";
+  const tag=document.createElement("div");tag.className="tag";tag.textContent=p.club;
+  const n=document.createElement("div");n.className="name";n.textContent=p.name;
+  
+  const pr=document.createElement("div");pr.className="price";pr.textContent=money(p.priceCash||p.price);
+  const second=document.createElement("div");second.className="cat";second.textContent=p.priceCard?("Tarjeta (1 pago): "+money(p.priceCard)):"";
+  const add=document.createElement("button");add.className="add";add.textContent="AGREGAR AL CARRITO";
+  if(productOut){add.textContent="SIN STOCK";add.disabled=true;add.classList.add("stock-disabled77")}else{add.onclick=e=>{e.stopPropagation();if(vars.length>1){openProduct(p)}else{addCart(p,add,vars[0]||null,1)}}}
+  info.append(tag,n,pr,second,add);a.append(pic,info);a.onclick=()=>openProduct(p);return a;
+}
+function render(){
+  const list=filtered();$("resultCount").textContent=list.length+" productos";$("grid").replaceChildren(...list.map(makeCard));clearBtns();
+}
+function syncSearch(v){$("search").value=v;$("topSearch").value=v;clearBtns()}
+function clearBtns(){$("catalogClear").style.display=$("search").value?"block":"none";$("topClear").style.display=$("topSearch").value?"block":"none"}
+function toast(txt){$("toastTitle").textContent="Listo ✓";$("toastText").textContent=txt;$("toast").classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>$("toast").classList.remove("show"),1400)}
+function addCart(p,b,variant=null,qty=1){ if(p.outOfStock){alert("Este producto está sin stock.");return;}
+  const vars=productVariants(p);
+  const chosen=variant || (vars.length===1?vars[0]:null);
+  if(vars.length>1 && !chosen){
+    alert("Elegí un diseño antes de agregar el producto al carrito.");
+    return false;
+  }
+  if(chosen&&(chosen.out_of_stock||chosen.outOfStock)){alert("Ese diseño está sin stock. Elegí otro.");return false}
+  const vName=(vars.length>1&&chosen)?chosen.name:"";
+  const vId=chosen?chosen.id:"single";
+  const key=p.id+"::"+vId;
+  const image=chosen?variantImage(p,chosen):displayImage(p);
+  const x=cart.find(x=>x.key===key);
+  if(x)x.qty+=qty;
+  else cart.push({key,id:p.id,name:p.name,club:p.club,category:p.category||"",variantId:vId,variantName:vName,image,priceCash:p.priceCash||p.price||"",priceCard:p.priceCard||"",qty});
+  $("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
+  $("cartBtn").classList.remove("pulse");void $("cartBtn").offsetWidth;$("cartBtn").classList.add("pulse");
+  if(b){const old=b.textContent;b.textContent="AGREGADO ✓";b.classList.add("added");b.disabled=true;setTimeout(()=>{b.textContent=old;b.classList.remove("added");b.disabled=false},800)}
+  toast(p.name+(vName?" · "+vName:""));
+  return true;
+}
+function openProduct(p){
+  productModalVariant=null;productModalQty=1;
+  const vars=productVariants(p);
+  const productOut=!!p.outOfStock||(vars.length>0&&vars.every(v=>v.out_of_stock||v.outOfStock));
+  if(vars.length===1&&!(vars[0].out_of_stock||vars[0].outOfStock))productModalVariant=vars[0];
+
+  const d=$("productDetail");d.innerHTML="";
+  const root=document.createElement("div");root.className="detail";
+  const pc=document.createElement("div");pc.className="detailpic";
+  const im=document.createElement("img");im.src=productModalVariant?variantImage(p,productModalVariant):displayImage(p);im.alt=p.name;pc.append(im);
+  const gallery=[p.image,...(Array.isArray(p.gallery)?p.gallery:[])].filter((u,i,a)=>u&&a.indexOf(u)===i);
+  if(gallery.length>1){const thumbs=document.createElement("div");thumbs.className="gallery-thumbs82";gallery.forEach((u,i)=>{const b=document.createElement("button");b.type="button";b.className="gallery-thumb82"+(i===0?" active":"");const ti=document.createElement("img");ti.src=u;ti.alt=p.name+" foto "+(i+1);b.append(ti);b.onclick=()=>{im.src=u;thumbs.querySelectorAll(".gallery-thumb82").forEach(x=>x.classList.remove("active"));b.classList.add("active")};thumbs.append(b)});pc.append(thumbs)}
+
+  const r=document.createElement("div");
+  const h=document.createElement("h2");h.textContent=p.name;r.append(h);
+  if(p.official){const od=document.createElement("div");od.className="official-detail";od.textContent="PRODUCTO OFICIAL";r.append(od)} if(productOut){const sd=document.createElement("div");sd.className="stock-detail77";sd.textContent="SIN STOCK";r.append(sd)}
+  const cash=document.createElement("h3");cash.textContent="Efectivo / transferencia: "+money(p.priceCash||p.price);
+  const card=document.createElement("p");card.textContent=p.priceCard?("Precio con tarjeta (1 pago): "+money(p.priceCard)):"Precio con tarjeta (1 pago): consultar";
+  r.append(cash,card);
+  if((p.description||"").trim()){const de=document.createElement("p");de.className="desc";de.textContent=p.description;r.append(de);}
+
+  if(vars.length>1){
+    const vs=document.createElement("div");vs.className="variant-section75";
+    const title=document.createElement("strong");title.textContent="Elegí el diseño:";
+    const opts=document.createElement("div");opts.className="variant-options75";
+    const required=document.createElement("div");required.className="variant-required75";required.textContent="Seleccioná un diseño para continuar.";
+    vars.forEach(v=>{
+      const b=document.createElement("button");b.type="button";b.className="variant-option75";
+      const vi=document.createElement("img");vi.src=variantImage(p,v);vi.alt=v.name;
+      const sp=document.createElement("span");sp.textContent=v.name;b.append(vi,sp);
+      const sold=!!(v.out_of_stock||v.outOfStock);if(sold){b.disabled=true;b.classList.add("variant-soldout")}else b.onclick=()=>{productModalVariant=v;im.src=variantImage(p,v);pc.querySelectorAll(".gallery-thumb82").forEach(x=>x.classList.remove("active"));opts.querySelectorAll(".variant-option75").forEach(x=>x.classList.remove("active"));b.classList.add("active");required.style.display="none"};
+      opts.append(b);
+    });
+    vs.append(title,opts,required);r.append(vs);
+  }
+
+  const qty=document.createElement("div");qty.className="product-qty75";
+  const minus=document.createElement("button");minus.textContent="−";
+  const q=document.createElement("span");q.textContent="1";
+  const plus=document.createElement("button");plus.textContent="+";
+  minus.onclick=()=>{productModalQty=Math.max(1,productModalQty-1);q.textContent=productModalQty};
+  plus.onclick=()=>{productModalQty++;q.textContent=productModalQty};
+  qty.append(minus,q,plus);r.append(qty);
+
+  const ad=document.createElement("button");ad.className="btn";ad.textContent="AGREGAR AL CARRITO";
+  if(productOut){ad.disabled=true;ad.textContent="SIN STOCK"}
+  ad.onclick=()=>{
+    if(vars.length>1&&!productModalVariant){
+      const req=r.querySelector(".variant-required75");if(req)req.style.display="block";return;
+    }
+    if(addCart(p,ad,productModalVariant,productModalQty))$("productModal").classList.remove("show");
+  };
+  r.append(ad);
+  const ig=document.createElement("a");ig.className="product-instagram76";ig.href="https://www.instagram.com/latiendadelhincha.ej/";ig.target="_blank";ig.rel="noopener";ig.textContent="¿Tenés dudas sobre este producto? Consultanos por Instagram →";r.append(ig);
+  root.append(pc,r);d.append(root);$("productModal").classList.add("show");
+}
+function openCart(){
+  const b=$("cartItems");b.innerHTML="";
+  if(!cart.length){b.innerHTML='<div class="empty">Tu carrito está vacío.</div>';}else{
+    cart.forEach(x=>{
+      const row=document.createElement("div");row.className="cartrow74";
+      const thumb=document.createElement("div");thumb.className="cartthumb74";const img=document.createElement("img");img.src=x.image||"";img.alt=x.name;thumb.append(img);
+      const meta=document.createElement("div");meta.className="cartmeta74";const nm=document.createElement("strong");nm.textContent=x.name;const sm=document.createElement("small");sm.textContent=x.club+(x.variantName?" · "+x.variantName:"");const unit=document.createElement("div");unit.className="cartunit74";const unitCash=Number(String(x.priceCash||"").replace(/\D/g,""));unit.textContent=(unitCash?money(unitCash):"Precio a consultar")+" c/u";meta.append(nm,sm,unit);
+      const side=document.createElement("div");side.className="cartside74";const q=document.createElement("div");q.className="qty";const mi=document.createElement("button"),sp=document.createElement("span"),pl=document.createElement("button");mi.textContent="−";sp.textContent=x.qty;pl.textContent="+";mi.onclick=()=>changeQty(x.key,-1);pl.onclick=()=>changeQty(x.key,1);q.append(mi,sp,pl);const sub=document.createElement("div");sub.className="cartsubtotal74";sub.textContent=unitCash?money(unitCash*x.qty):"Consultar";side.append(q,sub);row.append(thumb,meta,side);b.append(row);
+    });
+    const totalCash=cart.reduce((s,x)=>s+Number(String(x.priceCash||"").replace(/\D/g,""))*x.qty,0);const hasAllCash=cart.every(x=>Number(String(x.priceCash||"").replace(/\D/g,""))>0);const totalCard=cart.reduce((s,x)=>s+Number(String(x.priceCard||"").replace(/\D/g,""))*x.qty,0);const hasAllCard=cart.every(x=>Number(String(x.priceCard||"").replace(/\D/g,""))>0);
+    const totals=document.createElement("div");totals.className="carttotals74";const cashLine=document.createElement("div");cashLine.className="carttotalline74 grand";cashLine.innerHTML='<span>Total efectivo / transferencia</span><span>'+(hasAllCash?money(totalCash):"Consultar")+'</span>';totals.append(cashLine);if(hasAllCard){const cardLine=document.createElement("div");cardLine.className="carttotalline74";cardLine.innerHTML='<span>Total tarjeta (1 pago)</span><strong>'+money(totalCard)+'</strong>';totals.append(cardLine);const note=document.createElement("div");note.className="card-note80";note.textContent="Consultá opciones en cuotas por WhatsApp.";totals.append(note);}b.append(totals);
+    const delivery=document.createElement("div");delivery.className="cart-info80";delivery.innerHTML='<strong>Forma de entrega</strong><br>Podés retirar gratis en el local o solicitar envío a domicilio. La opción se elige en el paso 1 al finalizar la compra.';b.append(delivery);
+  }
+  $("cartModal").classList.add("show");
+}
+function changeQty(key,n){const x=cart.find(x=>x.key===key);if(!x)return;x.qty+=n;if(x.qty<=0)cart=cart.filter(x=>x.key!==key);$("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);openCart()}
+
+/* ---------- ADMIN VISUAL ---------- */
+function adminClubs(){
+  return [...new Set(PRODUCTS.map(p=>p.club))].sort((a,b)=>a.localeCompare(b,"es"));
+}
+function fillAdminCategoryFilter(){
+  const club=$("adminClubFilter").value;
+  const current=$("adminCategoryFilter").value;
+  const cats=[...new Set(PRODUCTS.filter(p=>!club||p.club===club).map(p=>p.category).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"es"));
+  $("adminCategoryFilter").replaceChildren(new Option("Todas las subcategorías",""),...cats.map(c=>new Option(c,c)));
+  if(cats.includes(current))$("adminCategoryFilter").value=current;
+}
+function fillAdminClubFilter(){
+  const current=$("adminClubFilter").value;
+  const cs=adminClubs();
+  $("adminClubFilter").replaceChildren(new Option("Todos los clubes",""),...cs.map(c=>new Option(c,c)));
+  if(cs.includes(current))$("adminClubFilter").value=current;fillAdminCategoryFilter();
+}
+function fillEditClub(selected=""){
+  const cs=adminClubs();$("editClub").replaceChildren(...cs.map(c=>new Option(c,c)));
+  if(cs.includes(selected))$("editClub").value=selected;
+}
+function fillEditCategories(club,selected=""){
+  const cats=categoriesFor(club);$("editCategory").replaceChildren(...cats.map(c=>new Option(c,c)));
+  if(cats.includes(selected))$("editCategory").value=selected;
+}
+function adminFiltered(){
+  const q=$("adminSearch").value.toLowerCase(),club=$("adminClubFilter").value,cat=$("adminCategoryFilter").value;
+  return PRODUCTS.filter(p=>(!club||p.club===club)&&(!cat||p.category===cat)&&(!q||(`${p.name} ${p.club} ${p.category}`).toLowerCase().includes(q)));
+}
+function adminRender(){
+  fillAdminClubFilter();
+  $("adminGrid").replaceChildren(...adminFiltered().map(p=>{
+    const c=document.createElement("div");c.className="admin-card2";
+    const check=document.createElement("input");check.type="checkbox";check.className="admin-check2";check.checked=selected.has(p.id);
+    check.onchange=()=>{check.checked?selected.add(p.id):selected.delete(p.id);updateBulkBar()};
+    const photo=document.createElement("div");photo.className="photo";const im=document.createElement("img");im.src=displayImage(p);im.alt=p.name;photo.append(im);
+    const body=document.createElement("div");body.className="body";
+    const st=document.createElement("strong");st.textContent=p.name;
+    const sm=document.createElement("small");sm.textContent=p.club+" · "+p.category+" · "+money(p.priceCash||p.price);
+    const acts=document.createElement("div");acts.className="actions";
+    const edit=document.createElement("button");edit.className="btn";edit.textContent="EDITAR";edit.onclick=()=>openEdit(p.id);
+    const del=document.createElement("button");del.className="btn alt";del.textContent="BORRAR";del.onclick=()=>deleteProduct(p.id);
+    acts.append(edit,del);body.append(st,sm,acts);c.append(check,photo,body);return c;
+  }));
+  updateBulkBar();
+}
+function updateBulkBar(){$("bulkCount").textContent=selected.size+" seleccionados";$("bulkBar").classList.toggle("show",selected.size>0)}
+
+function normalizeVariantsForEdit(p){
+  return productVariants(p).map((v,i)=>({
+    id:v.id||("v"+i),
+    name:v.name||("Diseño "+(i+1)),
+    image:v.image||null,
+    imageIndex:Number.isInteger(v.imageIndex)?v.imageIndex:null,
+    resolvedImage:variantImage(p,v)
+  }));
+}
+function renderVariantAdmin(){
+  const box=$("variantAdminList");box.innerHTML="";
+  currentVariants.forEach((v,i)=>{
+    const row=document.createElement("div");row.className="variant-admin-row75";
+    const thumb=document.createElement("div");thumb.className="variant-admin-thumb75";
+    if(v.resolvedImage||v.image){const im=document.createElement("img");im.src=v.image||v.resolvedImage;thumb.append(im)}
+    else thumb.innerHTML='<span style="color:#777;font-size:11px;text-align:center">Sin foto</span>';
+
+    const main=document.createElement("div");main.className="variant-admin-main75";
+    const name=document.createElement("input");name.type="text";name.value=v.name||("Diseño "+(i+1));name.placeholder="Nombre del diseño";
+    name.oninput=()=>{currentVariants[i].name=name.value};
+    const upload=document.createElement("input");upload.type="file";upload.accept="image/*";upload.className="variant-upload75";
+    upload.onchange=e=>{if(e.target.files[0])resizeFile(e.target.files[0],u=>{currentVariants[i].image=u;currentVariants[i].imageIndex=null;currentVariants[i].resolvedImage=u;renderVariantAdmin()})};
+    main.append(name,upload);
+
+    const del=document.createElement("button");del.type="button";del.className="variant-delete75";del.textContent="BORRAR";
+    del.onclick=()=>{if(currentVariants.length<=1){alert("El producto tiene que conservar al menos un diseño/foto.");return}currentVariants.splice(i,1);renderVariantAdmin()};
+    row.append(thumb,main,del);box.append(row);
+  });
+}
+function addVariantAdmin(){
+  const i=currentVariants.length;
+  currentVariants.push({id:"custom-"+Date.now()+"-"+i,name:"Diseño "+(i+1),image:null,imageIndex:null,resolvedImage:null});
+  renderVariantAdmin();
+}
+function serializeVariants(){
+  return currentVariants.map((v,i)=>{
+    const out={id:v.id||("v"+i),name:(v.name||("Diseño "+(i+1))).trim()||("Diseño "+(i+1))};
+    if(v.image)out.image=v.image;
+    else if(Number.isInteger(v.imageIndex))out.imageIndex=v.imageIndex;
+    return out;
+  });
+}
+
+function openEdit(id){
+  currentEdit=id;newImage=null;const p=PRODUCTS.find(x=>x.id===id);
+  $("editTitle").textContent="Editar producto";$("editName").value=p.name;fillEditClub(p.club);fillEditCategories(p.club,p.category);
+  $("editPriceCash").value=p.priceCash||p.price||"";$("editPriceCard").value=p.priceCard||"";$("editDescription").value=p.description||"";$("editVisible").checked=p.visible!==false;$("editOfficial").checked=!!p.official;$("editOutOfStock").checked=!!p.outOfStock;
+  currentVariants=normalizeVariantsForEdit(p);renderVariantAdmin();
+  $("imagePreview").innerHTML='<img src="'+displayImage(p)+'">';$("editModal").classList.add("show");
+}
+function newProduct(){
+  currentEdit=null;newImage=null;$("editTitle").textContent="Nuevo producto";$("editName").value="";
+  const cs=adminClubs();fillEditClub(cs[0]||"");fillEditCategories(cs[0]||"");
+  $("editPriceCash").value="";$("editPriceCard").value="";$("editDescription").value="";$("editVisible").checked=true;$("editOfficial").checked=false;$("editOutOfStock").checked=false;
+  currentVariants=[{id:"custom-"+Date.now(),name:"Diseño 1",image:null,imageIndex:null,resolvedImage:null}];renderVariantAdmin();
+  $("imagePreview").innerHTML='<span style="color:#888">Elegí una imagen para el diseño</span>';
+  $("editModal").classList.add("show");
+}
+function resizeFile(file,cb){
+  const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const max=1500,scale=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*scale);c.height=Math.round(im.height*scale);c.getContext("2d").drawImage(im,0,0,c.width,c.height);cb(c.toDataURL("image/jpeg",.9))};im.src=r.result};r.readAsDataURL(file);
+}
+
+function createNewCategory(){
+  const club=$("editClub").value;
+  if(!club){alert("Primero elegí un club.");return}
+  const raw=prompt("Nombre de la nueva subcategoría:");
+  if(raw===null)return;
+  const name=raw.trim();
+  if(!name)return;
+  const existing=[...$("editCategory").options].map(o=>o.value.toLowerCase());
+  if(!existing.includes(name.toLowerCase()))$("editCategory").add(new Option(name,name));
+  $("editCategory").value=name;
+}
+
+function saveEdit(){
+  const name=$("editName").value.trim(),club=$("editClub").value,cat=$("editCategory").value;
+  if(!name||!club||!cat){alert("Completá nombre, club y subcategoría.");return}
+  const variants=serializeVariants();
+  if(!variants.length){alert("El producto necesita al menos una foto/diseño.");return}
+  const missing=currentVariants.some(v=>!v.image&&!Number.isInteger(v.imageIndex)&&!v.resolvedImage);
+  if(missing){alert("Hay un diseño sin foto. Cargale una imagen o borrá ese diseño.");return}
+  const patch={name,club,category:cat,priceCash:$("editPriceCash").value.replace(/\D/g,""),priceCard:$("editPriceCard").value.replace(/\D/g,""),description:$("editDescription").value.trim(),visible:$("editVisible").checked,official:$("editOfficial").checked,outOfStock:$("editOutOfStock").checked,variants};
+  if(currentEdit===null){
+    const firstImage=currentVariants[0].image||currentVariants[0].resolvedImage;
+    const id=Math.max(MAX_BASE_ID,...(STATE.custom||[]).map(p=>p.id),0)+1;
+    STATE.custom.push({id,...patch,image:firstImage,images:currentVariants.map(v=>v.image||v.resolvedImage).filter(Boolean),custom:true});
+    saveState();PRODUCTS=buildProducts();
+  }else{
+    if(newImage){
+      if(!currentVariants.length)currentVariants=[{id:"custom-"+Date.now(),name:"Diseño 1"}];
+      currentVariants[0].image=newImage;currentVariants[0].imageIndex=null;currentVariants[0].resolvedImage=newImage;
+      patch.variants=serializeVariants();
+    }
+    patchProduct(currentEdit,patch);
+  }
+  $("editModal").classList.remove("show");rebuildClubs();rebuildCats();render();adminRender();toast("Cambios guardados");
+}
+function deleteProduct(id){
+  const p=PRODUCTS.find(x=>x.id===id);if(!p)return;
+  if(!confirm("¿Borrar "+p.name+"?"))return;
+  if(id>MAX_BASE_ID){STATE.custom=(STATE.custom||[]).filter(x=>x.id!==id)}
+  else if(!STATE.deleted.includes(id))STATE.deleted.push(id);
+  selected.delete(id);saveState();PRODUCTS=buildProducts();rebuildClubs();rebuildCats();render();adminRender();toast("Producto borrado");
+}
+function applyBulk(){
+  if(!selected.size)return;
+  const useCash=$("bulkUseCash").checked,useCard=$("bulkUseCard").checked,useDesc=$("bulkUseDesc").checked,useOfficial=$("bulkUseOfficial").checked,useOutOfStock=$("bulkUseOutOfStock").checked;
+  if(!useCash&&!useCard&&!useDesc&&!useOfficial&&!useOutOfStock){alert("Marcá al menos un campo para aplicar.");return}
+  for(const id of selected){
+    const patch={};
+    if(useCash)patch.priceCash=$("bulkCash").value.replace(/\D/g,"");
+    if(useCard)patch.priceCard=$("bulkCard").value.replace(/\D/g,"");
+    if(useDesc)patch.description=$("bulkDesc").value.trim();if(useOfficial)patch.official=$("bulkOfficial").checked;if(useOutOfStock)patch.outOfStock=$("bulkOutOfStock").checked;
+    patchProduct(id,patch);
+  }
+  $("bulkModal").classList.remove("show");selected.clear();$("bulkUseCash").checked=false;$("bulkUseCard").checked=false;$("bulkUseDesc").checked=false;$("bulkUseOfficial").checked=false;$("bulkUseOutOfStock").checked=false;$("bulkCash").value="";$("bulkCard").value="";$("bulkDesc").value="";$("bulkOfficial").checked=false;$("bulkOutOfStock").checked=false;render();adminRender();toast("Edición masiva aplicada");
+}
+
+
+
+function cartTotalFor(payment){
+  const useCard=payment==="card";
+  let complete=true,total=0;
+  cart.forEach(x=>{
+    const raw=useCard?x.priceCard:x.priceCash;
+    const n=Number(String(raw||"").replace(/\D/g,""));
+    if(!n)complete=false; else total+=n*x.qty;
+  });
+  return {complete,total};
+}
+function setCheckoutStep(step){
+  checkoutStep=step;
+  document.querySelectorAll("[data-checkout-step]").forEach(p=>p.classList.toggle("active",Number(p.dataset.checkoutStep)===step));
+  document.querySelectorAll("[data-step-label]").forEach(l=>l.classList.toggle("active",Number(l.dataset.stepLabel)===step));
+}
+function updateDeliveryFields76(){
+  const d=selectedDelivery(),postal=d==="shipping"||d==="branch";
+  $("shippingFields").classList.toggle("show",postal);
+  $("addressField76").style.display=d==="shipping"?"block":"none";
+  $("referenceField76").style.display=d==="shipping"?"block":"none";
+  $("branchField76").style.display=d==="branch"?"block":"none";
+}
+function selectedDelivery(){return document.querySelector('input[name="checkoutDelivery"]:checked')?.value||"pickup"}
+function selectedPayment(){return document.querySelector('input[name="checkoutPayment"]:checked')?.value||"cash"}
+function openCheckout(){
+  if(!cart.length){alert("Tu carrito está vacío.");return}
+  $("cartModal").classList.remove("show");
+  setCheckoutStep(1);
+  updateDeliveryFields76();
+  $("checkoutModal").classList.add("show");
+}
+function validateCustomer(){
+  if(!$("customerName").value.trim()){alert("Ingresá tu nombre y apellido.");$("customerName").focus();return false}
+  if(selectedDelivery()==="shipping"||selectedDelivery()==="branch"){
+    if(selectedDelivery()==="shipping"&&!$("customerAddress").value.trim()){alert("Ingresá la dirección de entrega.");$("customerAddress").focus();return false}
+    if(!$("customerCity").value.trim()){alert("Ingresá la localidad.");$("customerCity").focus();return false}
+    if(!$("customerCP").value.trim()){alert("Ingresá el código postal.");$("customerCP").focus();return false}
+  }
+  return true;
+}
+function renderOrderReview(){
+  const box=$("orderReview");box.innerHTML="";
+  cart.forEach(x=>{
+    const row=document.createElement("div");row.className="review-item75";
+    const im=document.createElement("img");im.src=x.image||"";
+    const meta=document.createElement("div");
+    const st=document.createElement("strong");st.textContent=x.name;
+    const sm=document.createElement("small");sm.textContent=(x.variantName?x.variantName+" · ":"")+"Cantidad: "+x.qty;
+    meta.append(st,document.createElement("br"),sm);
+    const payment=selectedPayment();
+    const raw=payment==="card"?x.priceCard:x.priceCash;
+    const n=Number(String(raw||"").replace(/\D/g,""));
+    const pr=document.createElement("strong");pr.textContent=n?money(n*x.qty):"Consultar";
+    row.append(im,meta,pr);box.append(row);
+  });
+
+  const del=document.createElement("div");del.className="review-box75";
+  const dv=selectedDelivery();del.innerHTML="<strong>Entrega</strong><br>"+(dv==="pickup"?"Retiro en nuestro local — GRATIS":dv==="branch"?"Correo Argentino — Retiro en sucursal · CP "+$("customerCP").value.trim()+" · costo a confirmar":"Correo Argentino — Envío a domicilio · CP "+$("customerCP").value.trim()+" · costo a confirmar");
+  box.append(del);
+
+  const pay=document.createElement("div");pay.className="review-box75";
+  const p=selectedPayment();
+  pay.innerHTML="<strong>Pago</strong><br>"+(p==="cash"?"Efectivo":p==="transfer"?"Transferencia — datos a coordinar con el local":"Tarjeta");
+  box.append(pay);
+
+  const totals=cartTotalFor(p);
+  const total=document.createElement("div");total.className="review-total75";
+  total.innerHTML="<span>Total"+(selectedDelivery()!=="pickup"?" (sin envío)":"")+"</span><span>"+(totals.complete?money(totals.total):"A confirmar")+"</span>";
+  box.append(total);
+}
+function buildWhatsAppMessage(orderCode){
+  const pay=selectedPayment(),delivery=selectedDelivery(),totals=cartTotalFor(pay);
+  const lines=["Hola La Tienda del Hincha, quiero hacer este pedido:",orderCode?"Pedido "+orderCode:"",""];
+  cart.forEach(x=>{
+    const raw=pay==="card"?x.priceCard:x.priceCash;
+    const n=Number(String(raw||"").replace(/\D/g,""));
+    lines.push("• "+x.name+(x.variantName?" — "+x.variantName:"")+" x"+x.qty+(n?" — "+money(n*x.qty):" — precio a confirmar"));
+  });
+  lines.push("");
+  lines.push("Entrega: "+(delivery==="pickup"?"Retiro en nuestro local (gratis)":delivery==="branch"?"Correo Argentino — Retiro en sucursal":"Correo Argentino — Envío a domicilio"));
+  if(delivery==="shipping"||delivery==="branch"){
+    if(delivery==="shipping")lines.push("Dirección: "+$("customerAddress").value.trim());
+    lines.push("Localidad: "+$("customerCity").value.trim());
+    lines.push("CP: "+$("customerCP").value.trim());
+    if(delivery==="shipping"&&$("customerReference").value.trim())lines.push("Referencia: "+$("customerReference").value.trim());
+    if(delivery==="branch"&&$("customerBranch").value.trim())lines.push("Sucursal preferida: "+$("customerBranch").value.trim());
+    lines.push("Costo de Correo Argentino: a confirmar");
+  }
+  lines.push("Pago: "+(pay==="cash"?"Efectivo":pay==="transfer"?"Transferencia":"Tarjeta"));
+  if(pay==="transfer")lines.push("Quedo a la espera de los datos para realizar la transferencia.");
+  lines.push("Total"+(delivery!=="pickup"?" sin envío":"")+": "+(totals.complete?money(totals.total):"a confirmar"));
+  lines.push("");
+  lines.push("Nombre: "+$("customerName").value.trim());
+  return lines.join("\n");
+}
+function newOrderCode(){const raw=crypto.randomUUID?crypto.randomUUID().replace(/-/g,"").slice(0,8):Math.random().toString(36).slice(2,10);let n=parseInt(raw,16);if(!Number.isFinite(n))n=Math.floor(Math.random()*1679616);return "#"+(n%1679616).toString(36).toUpperCase().padStart(4,"0")}
+async function saveOrderToSupabase(orderCode){
+ const sb=window.GTP_SUPABASE;if(!sb)throw new Error("La conexión con pedidos todavía no está disponible.");
+ const p=selectedPayment(),d=selectedDelivery(),t=cartTotalFor(p);
+ const items=cart.map(x=>({product_id:x.id,name:x.name,club:x.club,category:x.category||"",variant_id:x.variantId||"",variant_name:x.variantName||"",quantity:x.qty,unit_price:Number(String((p==="card"?x.priceCard:x.priceCash)||"").replace(/\D/g,""))||null}));
+ const details={address:d==="shipping"?$("customerAddress").value.trim():"",city:d!=="pickup"?$("customerCity").value.trim():"",postal_code:d!=="pickup"?$("customerCP").value.trim():"",reference:d==="shipping"?$("customerReference").value.trim():"",branch:d==="branch"?$("customerBranch").value.trim():""};
+ const {error}=await sb.from("orders").insert({order_code:orderCode,customer_name:$("customerName").value.trim(),items,total:t.complete?t.total:null,payment:p,delivery:d,delivery_details:details,status:"Pendiente"});if(error)throw error;
+}
+async function sendOrderWhatsApp(){
+ const button=$("sendWhatsAppOrder"),wa=window.open("about:blank","_blank");button.disabled=true;button.textContent="GUARDANDO PEDIDO...";const orderCode=newOrderCode();
+ try{await saveOrderToSupabase(orderCode);const msg=buildWhatsAppMessage(orderCode);const url="https://wa.me/5491123077171?text="+encodeURIComponent(msg);if(wa)wa.location.href=url;else location.href=url;cart=[];$("cartCount").textContent="0";$("checkoutModal").classList.remove("show")}catch(e){if(wa)wa.close();alert("No se pudo guardar el pedido. Probá nuevamente. Detalle: "+(e.message||e))}finally{button.disabled=false;button.textContent="ENVIAR PEDIDO POR WHATSAPP"}
+}
+
+
+const ORDERS_KEY="gtp_orders_v76";
+function loadOrders76(){try{return JSON.parse(localStorage.getItem(ORDERS_KEY)||"[]")}catch(e){return []}}
+function saveOrders76(v){localStorage.setItem(ORDERS_KEY,JSON.stringify(v))}
+function renderOrders76(){
+ const box=$("adminOrdersList");if(!box)return;box.innerHTML="";const os=loadOrders76();
+ if(!os.length){box.innerHTML='<div class="order-empty76">Todavía no hay pedidos guardados en esta PC.</div>';return}
+ os.forEach(o=>{const c=document.createElement("div");c.className="ordercard76";c.innerHTML='<div class="orderhead76"><div><strong>'+o.id+'</strong><br><small>'+new Date(o.createdAt).toLocaleString("es-AR")+'</small></div><strong>'+(o.total?money(o.total):"A confirmar")+'</strong></div><div class="ordergrid76"><div class="orderstat76"><b>Cliente</b>'+o.customerName+'</div><div class="orderstat76"><b>Pago</b>'+o.payment+'</div><div class="orderstat76"><b>Entrega</b>'+o.delivery+'</div><div class="orderstat76"><b>Productos</b>'+o.items.reduce((s,x)=>s+x.qty,0)+'</div></div>';
+ const a=document.createElement("div");a.className="orderactions76";const s=document.createElement("select");["Pendiente","Confirmado","Pagado","Preparando","Listo para retirar / Despachado","Entregado","Cancelado"].forEach(v=>s.add(new Option(v,v)));s.value=o.status;s.onchange=()=>{const all=loadOrders76(),x=all.find(x=>x.id===o.id);if(x){x.status=s.value;saveOrders76(all)}};a.append(s);c.append(a);box.append(c)})
+}
+function saveCurrentOrder76(){}
+function showAdmin76(which){const p=which==="products";$("adminProductsTab").classList.toggle("active",p);$("adminOrdersTab").classList.toggle("active",!p);$("adminProductsSection").classList.toggle("active",p);$("adminOrdersSection").classList.toggle("active",!p);if(!p)renderOrders76()}
+
+function exportBackup(){
+  const payload={app:"Gaston Tu Pasion",version:"V7.4",storageKey:KEY,exportedAt:new Date().toISOString(),state:STATE};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="gaston_tu_pasion_respaldo_"+new Date().toISOString().slice(0,10)+".json";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast("Respaldo exportado");
+}
+function importBackup(file){
+  const r=new FileReader();r.onload=()=>{try{const data=JSON.parse(r.result);const incoming=data.state||data;if(!incoming||!incoming.edits||!Array.isArray(incoming.deleted)||!Array.isArray(incoming.custom))throw new Error("formato");if(!confirm("Esto reemplazará los cambios guardados actualmente por los del respaldo. ¿Continuar?"))return;STATE=incoming;localStorage.setItem(KEY,JSON.stringify(STATE));PRODUCTS=buildProducts();selected.clear();rebuildClubs();rebuildCats();render();adminRender();toast("Respaldo importado");}catch(err){alert("Ese archivo no es un respaldo válido de La Tienda del Hincha.");}};r.readAsText(file);
+}
+/* ---------- INIT / EVENTS ---------- */
+// El catálogo público se dibuja recién cuando termina de cargar Supabase.
+$("resultCount").textContent="Cargando catálogo...";
+$("search").oninput=e=>{$("topSearch").value=e.target.value;render()};
+$("topSearch").oninput=e=>{$("search").value=e.target.value;render()};
+$("topSearch").onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();$("search").value=e.target.value;render();$("catalogo").scrollIntoView({behavior:"smooth"})}};
+$("catalogClear").onclick=()=>{syncSearch("");render()};
+$("topClear").onclick=()=>{syncSearch("");render()};
+$("clubFilter").onchange=()=>{rebuildCats();render()};
+$("catFilter").onchange=render;
+$("cartBtn").onclick=openCart;
+$("checkoutBtn").onclick=openCheckout;
+
+const adminOpenEl=$("adminOpen");if(adminOpenEl)adminOpenEl.onclick=()=>{$("adminModal").classList.add("show");adminRender()};
+$("exportBackupBtn").onclick=exportBackup;
+$("importBackupBtn").onclick=()=>$("importBackupFile").click();
+$("importBackupFile").onchange=e=>{if(e.target.files[0])importBackup(e.target.files[0]);e.target.value=""};
+$("adminSearch").oninput=adminRender;
+$("adminClubFilter").onchange=()=>{fillAdminCategoryFilter();adminRender()};$("adminCategoryFilter").onchange=adminRender;
+$("adminProductsTab").onclick=()=>showAdmin76("products");$("adminOrdersTab").onclick=()=>showAdmin76("orders");$("newProductBtn").onclick=newProduct;$("newCategoryBtn").onclick=createNewCategory;$("addVariantBtn").onclick=addVariantAdmin;
+$("bulkOpenBtn").onclick=()=>$("bulkModal").classList.add("show");
+$("bulkApplyBtn").onclick=applyBulk;
+$("editClub").onchange=()=>fillEditCategories($("editClub").value);
+$("saveEditBtn").onclick=saveEdit;
+$("editImage").onchange=e=>{if(e.target.files[0])resizeFile(e.target.files[0],u=>{newImage=u;if(!currentVariants.length)currentVariants=[{id:"custom-"+Date.now(),name:"Diseño 1"}];currentVariants[0].image=u;currentVariants[0].imageIndex=null;currentVariants[0].resolvedImage=u;renderVariantAdmin();$("imagePreview").innerHTML='<img src="'+u+'">'})};
+
+
+document.querySelectorAll('input[name="checkoutDelivery"]').forEach(r=>r.onchange=updateDeliveryFields76);
+$("checkoutNext1").onclick=()=>setCheckoutStep(2);
+$("checkoutBack2").onclick=()=>setCheckoutStep(1);
+$("checkoutNext2").onclick=()=>{if(validateCustomer())setCheckoutStep(3)};
+$("checkoutBack3").onclick=()=>setCheckoutStep(2);
+$("checkoutNext3").onclick=()=>{renderOrderReview();setCheckoutStep(4)};
+$("checkoutBack4").onclick=()=>setCheckoutStep(3);
+$("sendWhatsAppOrder").onclick=sendOrderWhatsApp;
+
+document.addEventListener("click",e=>{const c=e.target.closest("[data-close]");if(c){e.preventDefault();const target=$(c.dataset.close);if(target)target.classList.remove("show")}});document.querySelectorAll(".overlay").forEach(o=>o.addEventListener("click",e=>{if(e.target===o)o.classList.remove("show")}));
+window.addEventListener("scroll",()=>$("toTop").classList.toggle("show",scrollY>450),{passive:true});
+$("toTop").onclick=()=>scrollTo({top:0,behavior:"smooth"});
+</script><button id="backToTop" type="button" aria-label="Volver arriba" title="Volver arriba">↑</button><script id="backtotop-js">(()=>{const b=document.getElementById("backToTop");const sync=()=>b.classList.toggle("show",window.scrollY>500);window.addEventListener("scroll",sync,{passive:true});b.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));sync();})();</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script id="supabase-catalog-v79">
+(function(){
+ const SUPABASE_URL="https://yhohckrhzxdnksvvregb.supabase.co";
+ const SUPABASE_KEY="sb_publishable_s1pzaEqjo8hGQCCdAc7I7A_sM8k_vrB";
+ const setStatus=msg=>{const c=document.getElementById("clubProductCount");if(c)c.textContent=msg;if($("resultCount"))$("resultCount").textContent=msg;};
+ async function loadSupabaseCatalog(){
+   try{
+     if(!window.supabase||!window.supabase.createClient){setStatus("No se pudo conectar. Actualizá la página.");return;}
+     const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+     window.GTP_SUPABASE=sb;
+
+     // Los escudos cargan aparte: nunca frenan los productos.
+     sb.from('clubs').select('name,logo_url').then(clubsRes=>{
+       if(!clubsRes.error){
+         (clubsRes.data||[]).forEach(c=>{if(c&&c.name&&c.logo_url)LOGOS[c.name]=c.logo_url;});
+         rebuildClubs();
+       }else console.warn('Escudos de clubes:',clubsRes.error.message);
+     });
+
+     const res=await sb.from('products').select('*').eq('active',true).order('id',{ascending:true});
+     if(res.error)throw res.error;
+     PRODUCTS=(res.data||[]).map(mapProduct);
+
+     if(!PRODUCTS.length){
+       setStatus("0 productos");
+       return;
+     }
+     rebuildClubs();rebuildCats();render();
+     const c=document.getElementById("clubProductCount");
+     if(c)c.textContent=PRODUCTS.filter(p=>p.visible!==false).length+" productos";
+   }catch(e){
+     console.warn('No se pudo cargar Supabase.',e);
+     if(PRODUCTS.length){
+       rebuildClubs();rebuildCats();render();
+       const c=document.getElementById("clubProductCount");
+       if(c)c.textContent=PRODUCTS.length+" productos";
+     }else{
+       setStatus("No se pudo cargar el catálogo. Actualizá la página.");
+     }
+   }
+ }
+ loadSupabaseCatalog();
+})();
+</script>
+<style id="v80-update">
+.cart-info80{margin-top:14px;padding:12px;border:1px solid #333;background:#181818;border-radius:10px;color:#ccc;font-size:13px;line-height:1.45}
+.cart-unavailable80{margin-top:5px;color:#ff8d8d;font-weight:800;font-size:12px}.cart-remove80{border:1px solid #555;background:#222;color:#fff;border-radius:8px;padding:7px 9px;cursor:pointer;font-weight:800}.cart-remove80:hover{border-color:#49BFF2}.cartrow74.unavailable80{opacity:.72;border-color:#713}.cart-warning80{margin-top:10px;padding:10px;border:1px solid #713;background:#2a1012;border-radius:9px;color:#ffd5d7;font-size:13px}.card-note80{color:#aaa;font-size:12px;margin-top:3px}
+</style>
+
+<script id="v80-update-js">
+(()=>{
+  const CART_KEY80="gtp_cart_v80";
+  const q=id=>document.getElementById(id);
+  function cartCount80(){return cart.reduce((s,x)=>s+(Number(x.qty)||0),0)}
+  function saveCart80(){try{localStorage.setItem(CART_KEY80,JSON.stringify(cart))}catch(e){console.warn("No se pudo guardar el carrito",e)}}
+  function loadCart80(){try{const v=JSON.parse(localStorage.getItem(CART_KEY80)||"[]");if(Array.isArray(v))cart=v.filter(x=>x&&x.id!=null&&Number(x.qty)>0)}catch(e){cart=[]}if(q("cartCount"))q("cartCount").textContent=cartCount80()}
+  function currentProduct80(item){return PRODUCTS.find(p=>String(p.id)===String(item.id))||null}
+  function currentVariant80(p,item){if(!p)return null;const vars=productVariants(p);return vars.find(v=>String(v.id)===String(item.variantId))||(vars.length===1?vars[0]:null)}
+  function syncCart80(){
+    cart.forEach(item=>{
+      const p=currentProduct80(item);
+      let unavailable=!p||!!p.outOfStock;
+      if(p){
+        const vars=productVariants(p),v=currentVariant80(p,item);
+        if(vars.length&&item.variantId!=="single"&&!v)unavailable=true;
+        if(v&&(v.out_of_stock||v.outOfStock))unavailable=true;
+        item.name=p.name;item.club=p.club;item.category=p.category||"";item.priceCash=p.priceCash||p.price||"";item.priceCard=p.priceCard||"";
+        if(v){item.variantName=(vars.length>1?v.name:"");item.image=variantImage(p,v)}else item.image=displayImage(p);
+      }
+      item.unavailable=unavailable;
+    });
+    saveCart80();if(q("cartCount"))q("cartCount").textContent=cartCount80();
+    return cart.some(x=>x.unavailable);
+  }
+  window.GTP_saveCart80=saveCart80;
+
+  const originalAddCart80=addCart;
+  addCart=function(...args){const result=originalAddCart80(...args);if(result)saveCart80();return result};
+  changeQty=function(key,n){const x=cart.find(x=>x.key===key);if(!x)return;x.qty+=n;if(x.qty<=0)cart=cart.filter(y=>y.key!==key);saveCart80();q("cartCount").textContent=cartCount80();openCart()};
+
+  openCart=function(){
+    const hasUnavailable=syncCart80(),b=q("cartItems");b.innerHTML="";
+    if(!cart.length){b.innerHTML='<div class="empty">Tu carrito está vacío.</div>';}else{
+      cart.forEach(x=>{
+        const row=document.createElement("div");row.className="cartrow74"+(x.unavailable?" unavailable80":"");
+        const thumb=document.createElement("div");thumb.className="cartthumb74";const img=document.createElement("img");img.src=x.image||"";img.alt=x.name;thumb.append(img);
+        const meta=document.createElement("div");meta.className="cartmeta74";const nm=document.createElement("strong");nm.textContent=x.name;const sm=document.createElement("small");sm.textContent=x.club+(x.variantName?" · "+x.variantName:"");const unit=document.createElement("div");unit.className="cartunit74";const unitCash=Number(String(x.priceCash||"").replace(/\D/g,""));unit.textContent=(unitCash?money(unitCash):"Precio a consultar")+" c/u";meta.append(nm,sm,unit);
+        if(x.unavailable){const warn=document.createElement("div");warn.className="cart-unavailable80";warn.textContent="Este producto ya no está disponible.";meta.append(warn)}
+        const side=document.createElement("div");side.className="cartside74";
+        if(x.unavailable){const rm=document.createElement("button");rm.type="button";rm.className="cart-remove80";rm.textContent="QUITAR";rm.onclick=()=>{cart=cart.filter(y=>y.key!==x.key);saveCart80();openCart()};side.append(rm)}else{const qty=document.createElement("div");qty.className="qty";const mi=document.createElement("button"),sp=document.createElement("span"),pl=document.createElement("button");mi.textContent="−";sp.textContent=x.qty;pl.textContent="+";mi.onclick=()=>changeQty(x.key,-1);pl.onclick=()=>changeQty(x.key,1);qty.append(mi,sp,pl);const sub=document.createElement("div");sub.className="cartsubtotal74";sub.textContent=unitCash?money(unitCash*x.qty):"Consultar";side.append(qty,sub)}
+        row.append(thumb,meta,side);b.append(row);
+      });
+      const available=cart.filter(x=>!x.unavailable);
+      const totalCash=available.reduce((s,x)=>s+Number(String(x.priceCash||"").replace(/\D/g,""))*x.qty,0),hasAllCash=available.length&&available.every(x=>Number(String(x.priceCash||"").replace(/\D/g,""))>0);
+      const totalCard=available.reduce((s,x)=>s+Number(String(x.priceCard||"").replace(/\D/g,""))*x.qty,0),hasAllCard=available.length&&available.every(x=>Number(String(x.priceCard||"").replace(/\D/g,""))>0);
+      const totals=document.createElement("div");totals.className="carttotals74";const cashLine=document.createElement("div");cashLine.className="carttotalline74 grand";cashLine.innerHTML='<span>Total efectivo / transferencia</span><span>'+(hasAllCash?money(totalCash):"Consultar")+'</span>';totals.append(cashLine);if(hasAllCard){const cardLine=document.createElement("div");cardLine.className="carttotalline74";cardLine.innerHTML='<span>Total tarjeta (1 pago)</span><strong>'+money(totalCard)+'</strong>';totals.append(cardLine);const note=document.createElement("div");note.className="card-note80";note.textContent="Consultá opciones en cuotas por WhatsApp.";totals.append(note)}b.append(totals);
+      const info=document.createElement("div");info.className="cart-info80";info.innerHTML='<strong>Forma de entrega</strong><br>La elegís en el paso 1 al finalizar la compra: retiro en el local o envío.';b.append(info);
+      if(hasUnavailable){const w=document.createElement("div");w.className="cart-warning80";w.textContent="Quitá los productos que ya no están disponibles para poder continuar.";b.append(w)}
+    }
+    q("checkoutBtn").disabled=!cart.length||hasUnavailable;q("cartModal").classList.add("show");
+  };
+
+  const originalOpenCheckout80=openCheckout;
+  openCheckout=function(){if(syncCart80()){alert("Hay un producto del carrito que ya no está disponible. Quitalo para continuar.");openCart();return}originalOpenCheckout80()};
+
+  // Volver al carrito desde el paso 1.
+  const step1=document.querySelector('[data-checkout-step="1"] .checkout-actions75');
+  if(step1&&!q("checkoutBackToCart1")){const back=document.createElement("button");back.className="btn alt";back.id="checkoutBackToCart1";back.type="button";back.textContent="VOLVER AL CARRITO";step1.firstElementChild?.remove();step1.prepend(back);back.onclick=()=>{q("checkoutModal").classList.remove("show");openCart()}}
+
+  // Aclaración adicional en el paso de pago.
+  const cardChoice=document.querySelector('input[name="checkoutPayment"][value="card"]')?.closest("label");
+  if(cardChoice){const small=cardChoice.querySelector("small");if(small)small.textContent="Precio en 1 pago. Consultá opciones en cuotas por WhatsApp."}
+
+  async function finalStockCheck80(){
+    const sb=window.GTP_SUPABASE;if(!sb)throw new Error("La conexión con stock todavía no está disponible.");
+    const ids=[...new Set(cart.map(x=>x.id))];if(!ids.length)throw new Error("Tu carrito está vacío.");
+    const {data,error}=await sb.from("products").select("id,name,club,subcategory,price_cash,price_card,image_url,variants,active,out_of_stock").in("id",ids);
+    if(error)throw error;const byId=new Map((data||[]).map(p=>[String(p.id),p]));const missing=[];
+    cart.forEach(item=>{const p=byId.get(String(item.id));let unavailable=!p||p.active===false||!!(p&&p.out_of_stock);let v=null;if(p){const vars=Array.isArray(p.variants)?p.variants:[];v=vars.find(x=>String(x.id)===String(item.variantId))||(vars.length===1?vars[0]:null);if(vars.length&&item.variantId!=="single"&&!v)unavailable=true;if(v&&(v.out_of_stock||v.outOfStock))unavailable=true;item.name=p.name||item.name;item.priceCash=p.price_cash==null?"":String(p.price_cash);item.priceCard=p.price_card==null?"":String(p.price_card);item.image=(v&&v.image)||p.image_url||item.image}item.unavailable=unavailable;if(unavailable)missing.push(item.name+(item.variantName?" · "+item.variantName:""))});
+    saveCart80();
+    if(missing.length){openCart();throw new Error("Ya no está disponible: "+missing.join(", "));}
+    return true;
+  }
+  async function nextOrderCode80(){
+    const sb=window.GTP_SUPABASE;if(!sb)throw new Error("La conexión con pedidos todavía no está disponible.");
+    const {data,error}=await sb.rpc("next_gtp_order_code");if(error)throw new Error("No se pudo obtener el número consecutivo del pedido. Falta activar la numeración en Supabase o hubo un error de conexión.");
+    return String(data||"").trim();
+  }
+  sendOrderWhatsApp=async function(){
+    const button=q("sendWhatsAppOrder"),wa=window.open("about:blank","_blank");button.disabled=true;button.textContent="COMPROBANDO STOCK...";
+    try{
+      await finalStockCheck80();button.textContent="GENERANDO PEDIDO...";const orderCode=await nextOrderCode80();await saveOrderToSupabase(orderCode);const msg=buildWhatsAppMessage(orderCode);const url="https://wa.me/5491123077171?text="+encodeURIComponent(msg);if(wa)wa.location.href=url;else location.href=url;cart=[];saveCart80();q("cartCount").textContent="0";q("checkoutModal").classList.remove("show");
+    }catch(e){if(wa)wa.close();alert("No se pudo crear el pedido. "+(e.message||e))}finally{button.disabled=false;button.textContent="ENVIAR PEDIDO POR WHATSAPP"}
+  };
+  q("sendWhatsAppOrder").onclick=sendOrderWhatsApp;
+
+  // Mostrar 1 pago también en revisión/WhatsApp.
+  const originalReview80=renderOrderReview;
+  renderOrderReview=function(){originalReview80();if(selectedPayment()==="card"){const boxes=q("orderReview").querySelectorAll(".review-box75");boxes.forEach(box=>{if(box.textContent.startsWith("Pago"))box.innerHTML="<strong>Pago</strong><br>Tarjeta — precio en 1 pago. Consultá opciones en cuotas."})}};
+  const originalMsg80=buildWhatsAppMessage;
+  buildWhatsAppMessage=function(code){let msg=originalMsg80(code);if(selectedPayment()==="card")msg=msg.replace("Pago: Tarjeta","Pago: Tarjeta (precio publicado en 1 pago; cuotas a consultar)");return msg};
+
+  loadCart80();
+  setTimeout(()=>{syncCart80()},900);
+})();
+</script>
+</body></html>
